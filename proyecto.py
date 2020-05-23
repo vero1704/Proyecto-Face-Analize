@@ -1,16 +1,13 @@
-from datetime import datetime
-from typing import KeysView
+usu = {"fer": "12345", "raul": "169905"}
 
-usu = dict({'fer':['fer','123','admin'],'vero':['vero','123','usuario']})
-
-def iniciar_sesion(usuario,contra):
-    usua= usu.keys()
-    for i in usua:
-        for j in usu:
-            if usuario == i :
-                return (True, "\n--------------BIENVENIDO -------------- ")
-            else:
-                    return (False, "\n------Datos invalidos, intente nuevamente-------------\n")
+def iniciar_sesion(usuario, contra):
+    if usuario in usu:
+        if usu[usuario] == contra:
+            return (True, "___Bienvenido___")
+        else:
+            return (False, "___Datos invalidos, intente nuevamente___")
+    else:
+        return (False, "Datos invalidos, intente nuevamente")
 
 
 def menuPrincipal():
@@ -59,14 +56,12 @@ def main():
         if opcion == 1:
             usuario = input("Usuario: ")
             contra = input("Contraseña: ")
-            log, msj = iniciar_sesion(usuario,contra)
+            log, msj = iniciar_sesion(usuario, contra)
             print(msj)
             while log:
-                  op = int(input(menuAdmin()))
-                  if op == 3:
-                     log = False
-                     break
-
+                op = int(input(menuAdmin()))
+                if op == 7:
+                    log = False
         else:
             break
 
