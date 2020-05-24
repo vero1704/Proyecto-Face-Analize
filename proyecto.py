@@ -9,6 +9,16 @@ def iniciar_sesion(usuario, contra):
     else:
         return (False, "Datos invalidos, intente nuevamente")
 
+def Inicio_Sesión():
+    print("___Abrir Expediente Existente___ ")
+    nombreusuario= input("Ingrese el nombre de usuario") 
+    for usuario in listausuarios:
+        if usuario["nombreusuario"] == nombreusuario and usuario["cedula"] == cedula:
+            print("Bienvenido al expediente digital")
+            return
+    print ("nombre de mascota y nombre de dueño incorrectos, intente de nuevo")
+Inicio_Sesión()
+
 
 def menuPrincipal():
     menu = ("--------------FACE ANALIZE -------------- \n"
@@ -65,5 +75,51 @@ def main():
         else:
             break
 
-
 main()
+
+usuario1 = {"nombreusuario": "Juan","cedula": "#la cedula aleatoria",  "edad": "dd/mm/aa","rostro": "#FORMA ROSTRO ","COLOR PIEL": "### ","EMOCIONES": "### ","GÉNERO": "### "}
+usuario2 = {"nombreusuario": "Carla","cedula": "#la cedula aleatoria", "edad": "dd/mm/aa","rostro": "#FORMA ROSTRO ","COLOR PIEL": "### ","EMOCIONES": "### ","GÉNERO": "### "}
+listausuarios = [usuario, usuario2]
+def menuinicio():
+    print("___Menu inicio___")
+    print("1) Ingrese 1 si desea registrar un nuevo usuario\n"
+          "2) Ingrese 2 si desea abrir un expediente existente\n"
+          "3) Ingrese 3 si desea salir del menu principal")
+    opcion = input("¿Que acción desea realizar?")
+
+    if opcion == "1":
+         registrar()
+
+    elif opcion == "2":
+        abrirexpediente()
+
+    elif opcion == "3":
+        return
+    else:
+        print ("ingrese un número del menu ")
+menuinicio()
+def registrar():
+    nombremascota = input("Ingrese el nombre de la mascota: ")
+    raza = input("Ingrese la raza de la  mascota: ")
+    nombredueno = input("Nombre del dueño: ")
+    celular = input("Numero celular: ")
+    nuevamascota ={"nombremascota": nombremascota," raza": raza, "nombredueno": nombredueno, "numero celular": celular }
+    listamascotas.append(nuevamascota)
+    print(nombremascota, "Registrado con éxito")
+    menuinicio()
+
+
+def abrirexpediente():
+    print("___Abrir Expediente Existente___ ")
+    nombremascota= input("Ingrese el nombre de su mascota")
+    nombredueno= input("Ingrese el nombre del dueño")
+    for mascota in listamascotas:
+        if mascota["nombremascota"] == nombremascota and mascota["nombredueno"] == nombredueno:
+            print("Bienvenido al expediente digital")
+            return
+    print ("nombre de mascota y nombre de dueño incorrectos, intente de nuevo")
+    abrirexpediente()
+    menuinicio()
+
+
+registrar()
