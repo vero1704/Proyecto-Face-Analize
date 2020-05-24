@@ -18,6 +18,7 @@ def Inicio_Sesión():
             return
     print ("nombre de mascota y nombre de dueño incorrectos, intente de nuevo")
 Inicio_Sesión()
+print("ignorar")
 
 
 def menuPrincipal():
