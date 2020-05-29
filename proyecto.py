@@ -1,3 +1,9 @@
+"""
+AUTOR: Maria Fernanda Duran Condega Y VERONICA QUESADA
+FECHA: 17 de mayo
+SEMANA: PROYECTO
+"""
+
 import random
 
 usuarios = [{"nombreusuario":"Juan","contraseña":"123", "tipo" : "admin"},
@@ -6,127 +12,10 @@ usuarios = [{"nombreusuario":"Juan","contraseña":"123", "tipo" : "admin"},
 
 personas = []
 
-
-def inicio_Sesión(user,contraseña):
-    encontrado = False
-    for usuario in usuarios:
-        if usuario["nombreusuario"] == user and usuario["contraseña"] == contraseña:
-            return usuario["tipo"]
-    if encontrado == False:
-        print("-------Datos inválidos.Vuelva a intentarlo-------- \n")
-
-def generarCedulas():
-    cedula = random.randrange(1000) + 1
-    return  cedula
-
-def generarEdad():
-    edades = random.randrange(0, 100)
-    return edades
-
-def formaRostro():
-    rostro =["Redondo", "Alargado","Corazón","Cuadrado","Ovalado","Rectangular"]
-    return rostro
-
-def emociones():
-    emocion = ["Enfado","Desprecio", "Disgusto", "Miedo", "Sorpresa", "Alegría", "Neutral","Tristeza"]
-    return emocion
-
-
-def colorPiel():
-    piel = ["Negra","Marrón", "Morena", "Clara","Blanca"]
-    return piel
-
-def generos():
-    genero = ['Masculino', 'Femenino']
-    return genero
-
-def grupoEtario(edad):
-    if edad > 0 and edad <10:
-        return "Niño"
-    elif edad > 10 and edad <=19:
-        return "Adolescente"
-    elif edad >=20 and edad< 59:
-        return "Adulto"
-    elif edad >=59:
-        return "Adulto Mayor"
-
-def accesorios():
-    accesorio = ["Lentes", "Aretes", "Percing"," "]
-    return accesorio
-
-def cabellos():
-    cabellos = {}
-    cabellos["color"] = ["Negro", "Rubio", "Café", "Castaño", "Gris", "Invisible"]
-    cabellos["densidad"] = ["Escaso", "Moderado", "Abundante"]
-    cabellos["textura"] = ["Lacio","Ondulado","Rizado"]
-    return cabellos
-
-def ojos():
-    ojos = {}
-    ojos["forma"] = ["Almendrados", "Separados", "Redondos", "Caídos", "Saltones", "Juntos", "Profundos","Asiático"]
-    ojos["color"] = ["Negro", "Castaño", "Ámbar", "Avellana", "Verde", "Azul", "Gris"]
-    return ojos
-
-def ojosForma(ojos):
-    forma = random.choice(ojos["forma"])
-    return forma
-
-def ojosColor(ojos):
-    color = random.choice(ojos["color"])
-    return color
-
-def colorPelo(cabello):
-        pelo = random.choice(cabello["color"])
-        return pelo
-
-
-def densidadCabello(cabello):
-    pelo = random.choice(cabello["densidad"])
-    return pelo
-
-def texturaCabello(cabello):
-        pelo = random.choice(cabello["textura"])
-        return pelo
-
-def provincias():
-    provincia = ["San José","Alajuela", "Cartago", "Heredia", "Puntarenas", "Guanacaste", "Limón"]
-    return  provincia
-
-def crearPersona():
-    diccionario = {}
-    cedula = generarCedulas()
-    edad = generarEdad()
-    rostro = random.choice(formaRostro())
-    idRostro = formaRostro().index(rostro)
-    piel = random.choice(colorPiel())
-    idPiel = colorPiel().index(piel)
-    grupo = grupoEtario(edad)
-    idGrupo = grupoEtario(edad).index(grupo)
-    genero = random.choice(generos())
-    idGenero = generos().index(genero)
-    emocion = random.choice(emociones())
-    idEmocion = emociones().index(emocion)
-    accesorio = random.choice(accesorios())
-    idAccesorio = accesorios().index(accesorio)
-    provincia = random.choice(provincias())
-    idProvincia = provincias().index(provincia)
-    cabelloColor = colorPelo(cabellos())
-    idCabelloColor = colorPelo(cabellos()).index(cabelloColor)
-    cabelloDensidad = densidadCabello(cabellos())
-    #idCabelloDensidad = densidadCabello(cabellos()).index(cabelloDensidad)
-    cabelloTextura = texturaCabello(cabellos())
-    #idCabelloTextura = texturaCabello(cabellos()).index(cabelloTextura)
-    formaOjos = ojosForma(ojos())
-    #idFormaOjos = ojosForma(ojos()).index(formaOjos)
-    colorOjos = ojosColor(ojos())
-    #idColorOjos = ojosColor(ojos()).index(colorOjos)
-    diccionario = {"Cedula:":cedula,"Edad:": edad,"Rostro":idRostro,"Color Piel:":idPiel,"Grupo Etario:":idGrupo,"Genero:":idGenero,
-                   "Emocion: ":idEmocion,"Accesorios:":idAccesorio,"Color Cabello:":idCabelloColor,"Densidad Cabello:":cabelloDensidad,
-                   "Textura cabello:":cabelloTextura,"Forma ojos:":formaOjos,"Color ojos:":colorOjos,"Provincia:":idProvincia}
-    personas.append(diccionario)
-    return personas
-
-
+"""
+Description: Function that sees the main menu
+Return the menu
+"""
 def menuPrincipal():
     menu = ("--------------FACE ANALIZE -------------- \n"
          "***************************************** \n"
@@ -136,6 +25,10 @@ def menuPrincipal():
          "Seleccione una opcion: ")
     return menu
 
+"""
+Description: Function that sees the administrator menu
+Return the menu
+"""
 def menuAdmin():
     menu = ("--------------FACE ANALIZE -------------- \n"
          "***************************************** \n"
@@ -146,6 +39,10 @@ def menuAdmin():
          "Seleccione una opcion: ")
     return  menu
 
+"""
+Description: Function that sees the user menu.
+Return the menu
+"""
 def menuUser():
     menu = ("--------------FACE ANALIZE -------------- \n"
          "***************************************** \n"
@@ -156,6 +53,10 @@ def menuUser():
          "Seleccione una opcion: ")
     return  menu
 
+"""
+Description: Function that sees the analyst menu.
+Return the menu
+"""
 def menuAnalista():
     menu = ("--------------FACE ANALIZE -------------- \n"
          "***************************************** \n"
@@ -166,6 +67,390 @@ def menuAnalista():
          "\n"
          "Seleccione una opcion: ")
     return  menu
+
+
+"""
+Description: Function that validates if the user exists
+Returns the type of user if it is in the list or an error message
+"""
+def inicio_Sesión(user,contraseña):
+    encontrado = False
+    for usuario in usuarios:
+        if usuario["nombreusuario"] == user and usuario["contraseña"] == contraseña:
+            return usuario["tipo"]
+    if encontrado == False:
+        print("-------Datos inválidos. Vuelva a intentarlo-------- \n")
+
+
+"""
+Description: Function that returns a random number
+Returns the number, which will be the user's ID
+"""
+def generarCedulas():
+    cedula = random.randrange(1000) + 1
+    return  cedula
+
+"""
+Description: Function that returns a random number
+Returns the number, which will be the age of the user
+"""
+def generarEdad():
+    edades = random.randrange(0, 100)
+    return edades
+
+"""
+Description: Function that creates a list with various face shapes
+Returns the list with the face types
+"""
+def formaRostro():
+    rostro =["Redondo", "Alargado","Corazón","Cuadrado","Ovalado","Rectangular"]
+    return rostro
+
+"""
+Description: Function that creates a list with various emotions
+Return the list with emotions
+"""
+def emociones():
+    emocion = ["Enfado","Desprecio", "Disgusto", "Miedo", "Sorpresa", "Alegría", "Neutral","Tristeza"]
+    return emocion
+
+"""
+Description: Function that creates a list with various skin colors
+Returns the list with skin colors
+"""
+def colorPiel():
+    piel = ["Negra","Marrón", "Morena", "Clara","Blanca"]
+    return piel
+
+"""
+Description: Function that creates a list with the genres
+Returns the list with the genres
+"""
+def generos():
+    genero = ['Masculino', 'Femenino']
+    return genero
+
+"""
+Description: Function that creates a list with age groups, but at the same time validates the age range to know its 
+             age group.And receives as parameter the age
+Returns the age group index
+"""
+def grupoEtario(edad):
+    grupo =["Niño","Adolescente","Adulto","Adulto Mayor"]
+    if edad > 0 and edad <10:
+        g =  grupo[0]                       #Gets the item in those positions
+        index = grupo.index(g)              #Gets the index of the element
+        return index
+    elif edad > 10 and edad <=19:
+        g = grupo[1]
+        index = grupo.index(g)
+        return index
+    elif edad >=20 and edad< 59:
+        g = grupo[2]
+        index = grupo.index(g)
+        return index
+    elif edad >=59:
+        g = grupo[3]
+        index = grupo.index(g)
+        return index
+
+"""
+Description: Function that creates a list with accessories
+Returns the list with the elements
+"""
+def accesorios():
+    accesorio = ["Lentes", "Aretes", "Percing","Ninguno"]
+    return accesorio
+
+"""
+Description: Function that creates a dictionary with the different keys and their attributes
+Returns the dictionary with the elements
+"""
+def cabello():
+    cabello = {}
+    cabello["color"] = ["Negro", "Rubio", "Café", "Castaño", "Gris", "Invisible"]
+    cabello["densidad"] = ["Escaso", "Moderado", "Abundante"]
+    cabello["textura"] = ["Lacio","Ondulado","Rizado"]
+    return cabello
+
+"""
+Description: Function that randomly gets a hair color and searches the index. And receives as a parameter
+             hair which is the dictionary
+Returns the index of the selected elements
+"""
+def colorPelo(cabello):
+    pelo = random.choice(cabello["color"])              #Get random hair in color key
+    index = cabello["color"].index(pelo)                #Gets the index of the item in the dictionary with the color key
+    return index
+
+"""
+Description: Function that randomly gets a density of hair and searches the index. And receive as parameter
+             hair which is the dictionary
+Returns the index of the selected elements.
+"""
+def densidadCabello(cabello):
+    pelo = random.choice(cabello["densidad"])            #Get random hair in density key
+    index = cabello["densidad"].index(pelo)              #Gets the index of the item in the dictionary with the density key
+    return index
+
+"""
+Description: Function that randomly gets a hair texture and searches the index. And receive as parameter
+             hair which is the dictionary
+Returns the index of the selected elements.
+"""
+def texturaCabello(cabello):
+    pelo = random.choice(cabello["textura"])             #Get random hair in texture key
+    index = cabello["textura"].index(pelo)               #Gets the index of the item in the dictionary with the texture key
+    return index
+
+"""
+Description: Function that creates a dictionary with the different keys and their attributes.
+Returns the dictionary with the elements.
+"""
+def ojos():
+    ojos = {}
+    ojos["forma"] = ["Almendrados", "Separados", "Redondos", "Caídos", "Saltones", "Juntos", "Profundos","Asiático"]
+    ojos["color"] = ["Negro", "Castaño", "Ámbar", "Avellana", "Verde", "Azul", "Gris"]
+    return ojos
+
+"""
+Description: Function that randomly gets an eye shape and searches the index. And receive as a parameter eyes which is the dictionary
+Returns the index of the selected elements.
+"""
+def ojosForma(ojos):
+    forma = random.choice(ojos["forma"])                  #Get random eyes in shape key
+    index = ojos["forma"].index(forma)                    #Gets the index of the item in the dictionary with the shape key
+    return index
+
+"""
+Description: Function that randomly gets an eye color and searches the index. And receive as a parameter eyes which is the dictionary
+Returns the index of the selected elements.
+"""
+def ojosColor(ojos):
+    color = random.choice(ojos["color"])                  #Get random eyes in color key
+    index = ojos["color"].index(color)                    #Gets the index of the item in the dictionary with the shape key
+    return index
+
+"""
+Description: Function that creates a list with the provinces of Costa Rica
+Returns the list with the elements
+"""
+def provincias():
+    provincia = ["San José","Alajuela", "Cartago", "Heredia", "Puntarenas", "Guanacaste", "Limón"]
+    return  provincia
+
+"""
+Description: Function that randomly creates a person with all attributes.
+Returns the list with the different people and their attributes
+"""
+def crearPersonaAutomaticamente():
+    diccionario = {}
+    cedula = generarCedulas()
+    edad = generarEdad()
+    rostro = random.choice(formaRostro())                   #Get a face type elements randomly
+    idRostro = formaRostro().index(rostro)                  #Gets the index of the element
+    piel = random.choice(colorPiel())                       #Get a skin type elements randomly
+    idPiel = colorPiel().index(piel)                        #Gets the index of the element
+    grupo = grupoEtario(edad)
+    genero = random.choice(generos())
+    idGenero = generos().index(genero)
+    emocion = random.choice(emociones())
+    idEmocion = emociones().index(emocion)
+    accesorio = random.choice(accesorios())
+    idAccesorio = accesorios().index(accesorio)
+    provincia = random.choice(provincias())
+    idProvincia = provincias().index(provincia)
+    cabelloColor = colorPelo(cabello())
+    cabelloDensidad = densidadCabello(cabello())
+    cabelloTextura = texturaCabello(cabello())
+    formaOjos = ojosForma(ojos())
+    colorOjos = ojosColor(ojos())
+
+    diccionario = {"Cedula:":cedula,"Edad:": edad,"Rostro":idRostro,"Color Piel:":idPiel,"Grupo Etario:":grupo,"Genero:":idGenero,
+                   "Emocion: ":idEmocion,"Accesorios:":idAccesorio,"Color Cabello:":cabelloColor,"Densidad Cabello:":cabelloDensidad,
+                   "Textura cabello:":cabelloTextura,"Forma ojos:":formaOjos,"Color ojos:":colorOjos,"Provincia:":idProvincia}
+
+    personas.append(diccionario)                            #Copy the full dictionary into the declared list
+    return personas
+
+"""
+Description: Function that goes through the list of face shapes, and shows them one by one.
+Returns a message to choose
+"""
+def elegirRostro():
+    cont = 0
+    for elemento in formaRostro():                      #Scroll through the list
+        print(cont," -",elemento)                       #Print a number and the element that is going through the list
+        cont +=1
+    rostro = input("Seleccione el numero de su forma de rostro: ")
+    return rostro
+
+"""
+Description: Function that goes through the list of skin colors, and shows them one by one.
+Returns a message to choose
+"""
+def elegirPiel():
+    cont = 0
+    for elemento in colorPiel():                          #Scroll through the list
+        print(cont," -",elemento)                         #Print a number and the element that is going through the list
+        cont +=1
+    piel = input("Seleccione el numero de su color de piel: ")
+    return piel
+
+"""
+Description: Function that goes through the list of emotions, and shows them one by one.
+Returns a message to choose
+"""
+def elegirEmocion():
+     cont = 0
+     for elemento in emociones():                           #Scroll through the list
+         print(cont, " -", elemento)                        #Print a number and the element that is going through the list
+         cont += 1
+     emocion =  input("Seleccione el numero de su emocion: ")
+     return emocion
+
+"""
+Description: Function that goes through the list of genres, and shows them one by one.
+Returns a message to choose
+"""
+def elegirGenero():
+    cont = 0
+    for elemento in generos():                              #Scroll through the list
+        print(cont, " -", elemento)                         #Print a number and the element that is going through the list
+        cont += 1
+    genero = input("Seleccione el numero de su genero: ")
+    return genero
+
+"""
+Description: Function that goes through the list of accessories, and shows them one by one.
+Returns a message to choose
+"""
+def elegirAccesorios():
+    cont = 0
+    for elemento in accesorios():                           #Scroll through the list
+        print(cont, " -", elemento)                         #Print a number and the element that is going through the list
+        cont += 1
+    accesorio = input("Seleccione el numero de su accesorio: ")
+    return accesorio
+
+"""
+Description: Function that goes through the list of hair colors, and shows them one by one.
+Returns a message to choose
+"""
+def elegirCabello():
+    cont = 0
+    cabellos = cabello()
+    colores = cabellos["color"]                             #Assign the variable with the key to obtain
+    for elemento in colores:                                #Scroll through the list
+        print(cont, " -", elemento)                         #Print a number and the element that is going through the list
+        cont += 1
+    color = input("Seleccione el numero de su color de cabello: ")
+    return color
+
+"""
+Description: Function that goes through the list of hair densities, and shows them one by one.
+Returns a message to choose
+"""
+def elegirDensidad():
+    cont = 0
+    cabellos = cabello()
+    densidades = cabellos["densidad"]                       #Assign the variable with the key to obtain
+    for elemento in densidades:                             #Scroll through the list
+        print(cont, " -", elemento)                         #Print a number and the element that is going through the list
+        cont += 1
+    densidad = input("Seleccione el numero de la densidad de cabello: ")
+    return densidad
+
+"""
+Description: Function that goes through the list of hair textures, and shows them one by one.
+Returns a message to choose
+"""
+def elegirTextura():
+    cont = 0
+    cabellos = cabello()
+    texturas = cabellos["textura"]                          #Assign the variable with the key to obtain
+    for elemento in texturas:                               #Scroll through the list
+        print(cont, " -", elemento)                         #Print a number and the element that is going through the list
+        cont += 1
+    textura = input("Seleccione el numero de textura de su cabello: ")
+    return textura
+
+"""
+Description: Function that goes through the list of eye shapes, and shows them one by one.
+Returns a message to choose
+"""
+def elegirForma():
+    cont = 0
+    ojo = ojos()
+    formas = ojo["forma"]                                   #Assign the variable with the key to obtain
+    for elemento in formas:                                 #Scroll through the list
+        print(cont, " -", elemento)                         #Print a number and the element that is going through the list
+        cont += 1
+    forma = input("Seleccione el numero de la forma de sus ojos: ")
+    return forma
+
+"""
+Description: Function that goes through the list of eye colors, and shows them one by one.
+Returns a message to choose
+"""
+def elegirOjos():
+    cont = 0
+    ojo = ojos()
+    colores = ojo["color"]
+    for elemento in colores:                                #Scroll through the list
+        print(cont, " -", elemento)                         #Print a number and the element that is going through the list
+        cont += 1
+    color = input("Seleccione el numero del color de sus ojos: ")
+    return color
+
+"""
+Description: Function that goes through the list of provinces, and shows them one by one.
+Returns a message to choose
+"""
+def elegirProvincia():
+    cont = 0
+    for elemento in provincias():                           #Scroll through the list
+        print(cont, " -", elemento)                         #Print a number and the element that is going through the list
+        cont += 1
+    provincia = input("Seleccione el numero de su provincia: ")
+    return provincia
+
+def  crearPersonaManualmente():
+    diccionario = {}
+    cedula = generarCedulas()
+    edad = generarEdad()
+    print("\n--- Formas de rostro ---")                    #Print the attribute title
+    idRostro = elegirRostro()                              #Assign the function to a variable
+    print("\n--- Color de piel -----")
+    idPiel = elegirPiel()
+    print("\n--- Emoción -------")
+    idEmocion = elegirEmocion()
+    print("\n--- Genero -------")
+    idGenero = elegirGenero()
+    idGrupo = grupoEtario(edad)
+    print("\n--- Accesorios ----")
+    idAccesorios = elegirAccesorios()
+    print("\n--- Color de cabello ----")
+    idCabello = elegirCabello()
+    print("\n--- Densidad de cabello ----")
+    idDensidad = elegirDensidad()
+    print("\n--- Textura de cabello ----")
+    idTextura = elegirTextura()
+    print("\n--- Forma de ojos ----")
+    idForma = elegirForma()
+    print("\n--- Color de ojos ----")
+    idColor = elegirOjos()
+    print("\n--- Provincias ----")
+    idProvincia = elegirProvincia()
+
+    diccionario = {"Cedula:": cedula, "Edad:": edad, "Rostro": idRostro, "Color Piel:": idPiel, "Grupo Etario:": idGrupo,
+                   "Genero:": idGenero,"Emocion: ": idEmocion, "Accesorios:": idAccesorios, "Color Cabello:": idCabello,
+                   "Densidad Cabello:": idDensidad,"Textura cabello:": idDensidad, "Forma ojos:": idForma,
+                   "Color ojos:": idColor,"Provincia:": idProvincia}
+
+    personas.append(diccionario)  # Copy the full dictionary into the declared list
+    return personas
+
 
 def main():
     while True:
@@ -178,9 +463,14 @@ def main():
                 print("\n-------------Bienvenido", usuario, "--------------\n")
                 opcion = int(input(menuAdmin()))
                 if opcion == 1:
-                    print(crearPersona())
+                   crearPersonaAutomaticamente()
+                   print("\n-------------SE HA CREADO LA PERSONA CORRECTAMENTE--------------\n")
+                if opcion == 2:
+                    print("\n-------------CREAREMOS UNA PERSONA--------------\n")
+                    crearPersonaManualmente()
+                    print("\n-------------SE HA CREADO LA PERSONA CORRECTAMENTE--------------\n")
                 else:
-                    break
+                    return
             elif tipo == "user":
                 print("\n-------------Bienvenido", usuario, "--------------\n")
                 opcion = int(input(menuUser()))
