@@ -619,9 +619,5 @@ def main():
                     estadisticaProvinciaEtario()
                 elif opcion == 2:
                     break
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 2d267b18cf809af8cea7978ece2de2c3af055e64
 main()
