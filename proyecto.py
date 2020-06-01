@@ -1,5 +1,5 @@
 """
-AUTOR: Maria Fernanda Duran Condega Y VERONICA QUESADA
+AUTOR: Maria Fernanda Duran Condega Y Verónica Quesada Rojas
 FECHA: 17 de mayo
 SEMANA: PROYECTO
 """
@@ -46,11 +46,42 @@ Return the menu
 def menuUser():
     menu = ("--------------FACE ANALIZE -------------- \n"
          "***************************************** \n"
-         "\n1.Modificar una persona\n"
-         "2.Consultar personas \n"
-         "3.Salir\n"
+         "\n Digite 1 para Modificar una persona\n"
+         "Digite 2 para Consultar personas \n"
+         "Digite 3 para Salir\n"
          "\n"
-         "Seleccione una opcion: ")
+         "Seleccione una opción del menú")
+        opcion=input()
+        if opcion==1:
+            cambiar=input("Digite Cedula a Modificar")
+                for usuario in usuarios
+                    if usuarios[Cedula]==cambiar
+                        cedula[opcion]
+        elif opcion==2:
+            print("Digite la cedula a consultar")
+            consultaC=input("cedula")
+            generarCedulas()
+            for ced in cedulas
+                if consultaC in generarCedulas
+                return True 
+            else 
+            return False
+            print("La cedula consultada no existe ")
+            return menuUser()
+        elif opcion==3
+
+
+
+        else:
+            print("Opción inválida \n
+            "Ingrese una opción del menú"")
+            menuUser
+
+
+
+
+
+        
     return  menu
 
 """
@@ -67,7 +98,6 @@ def menuAnalista():
          "Seleccione una opcion: ")
     return  menu
 
-
 """
 Description: Function that validates if the user exists
 Returns the type of user if it is in the list or an error message
@@ -76,6 +106,7 @@ def inicio_Sesión(user,contraseña):
     encontrado = False
     for usuario in usuarios:
         if usuario["nombreusuario"] == user and usuario["contraseña"] == contraseña:
+            menuUser()
             return usuario["tipo"]
     if encontrado == False:
         print("-------Datos inválidos. Vuelva a intentarlo-------- \n")
@@ -588,4 +619,9 @@ def main():
                     estadisticaProvinciaEtario()
                 elif opcion == 2:
                     break
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 2d267b18cf809af8cea7978ece2de2c3af055e64
 main()
