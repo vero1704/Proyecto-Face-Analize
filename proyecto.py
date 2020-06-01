@@ -60,10 +60,9 @@ Return the menu
 def menuAnalista():
     menu = ("--------------FACE ANALIZE -------------- \n"
          "***************************************** \n"
-         "\n1.Estadistica por provincia\n"
-         "2.Estadistica de grupo etario \n"
-         "3.Estadistica por emocióm"
-         "4.Salir\n"
+         "\n1.Estadistica por provincia y grupo etario \n"
+         "2.Estadistica por emocióm"
+         "3.Salir\n"
          "\n"
          "Seleccione una opcion: ")
     return  menu
@@ -244,33 +243,36 @@ Description: Function that randomly creates a person with all attributes.
 Returns the list with the different people and their attributes
 """
 def crearPersonaAutomaticamente():
-    diccionario = {}
-    cedula = generarCedulas()
-    edad = generarEdad()
-    rostro = random.choice(formaRostro())                   #Get a face type elements randomly
-    idRostro = formaRostro().index(rostro)                  #Gets the index of the element
-    piel = random.choice(colorPiel())                       #Get a skin type elements randomly
-    idPiel = colorPiel().index(piel)                        #Gets the index of the element
-    grupo = grupoEtario(edad)
-    genero = random.choice(generos())
-    idGenero = generos().index(genero)
-    emocion = random.choice(emociones())
-    idEmocion = emociones().index(emocion)
-    accesorio = random.choice(accesorios())
-    idAccesorio = accesorios().index(accesorio)
-    provincia = random.choice(provincias())
-    idProvincia = provincias().index(provincia)
-    cabelloColor = colorPelo(cabello())
-    cabelloDensidad = densidadCabello(cabello())
-    cabelloTextura = texturaCabello(cabello())
-    formaOjos = ojosForma(ojos())
-    colorOjos = ojosColor(ojos())
+    cont = 0
+    while cont <=12:
+        diccionario = {}
+        cedula = generarCedulas()
+        edad = generarEdad()
+        rostro = random.choice(formaRostro())                   #Get a face type elements randomly
+        idRostro = formaRostro().index(rostro)                  #Gets the index of the element
+        piel = random.choice(colorPiel())                       #Get a skin type elements randomly
+        idPiel = colorPiel().index(piel)                        #Gets the index of the element
+        grupo = grupoEtario(edad)
+        genero = random.choice(generos())
+        idGenero = generos().index(genero)
+        emocion = random.choice(emociones())
+        idEmocion = emociones().index(emocion)
+        accesorio = random.choice(accesorios())
+        idAccesorio = accesorios().index(accesorio)
+        provincia = random.choice(provincias())
+        idProvincia = provincias().index(provincia)
+        cabelloColor = colorPelo(cabello())
+        cabelloDensidad = densidadCabello(cabello())
+        cabelloTextura = texturaCabello(cabello())
+        formaOjos = ojosForma(ojos())
+        colorOjos = ojosColor(ojos())
 
-    diccionario = {"Cedula:":cedula,"Edad:": edad,"Rostro":idRostro,"Color Piel:":idPiel,"Grupo Etario:":grupo,"Genero:":idGenero,
-                   "Emocion: ":idEmocion,"Accesorios:":idAccesorio,"Color Cabello:":cabelloColor,"Densidad Cabello:":cabelloDensidad,
+        diccionario = {"Cedula:":cedula,"Edad:": edad,"Rostro":idRostro,"Color Piel:":idPiel,"Grupo Etario:":grupo,"Genero:":idGenero,
+                   "Emocion:":idEmocion,"Accesorios:":idAccesorio,"Color Cabello:":cabelloColor,"Densidad Cabello:":cabelloDensidad,
                    "Textura cabello:":cabelloTextura,"Forma ojos:":formaOjos,"Color ojos:":colorOjos,"Provincia:":idProvincia}
 
-    personas.append(diccionario)                            #Copy the full dictionary into the declared list
+        personas.append(diccionario)                            #Copy the full dictionary into the declared list
+        cont +=1
     return personas
 
 """
@@ -444,12 +446,114 @@ def  crearPersonaManualmente():
     idProvincia = elegirProvincia()
 
     diccionario = {"Cedula:": cedula, "Edad:": edad, "Rostro": idRostro, "Color Piel:": idPiel, "Grupo Etario:": idGrupo,
-                   "Genero:": idGenero,"Emocion: ": idEmocion, "Accesorios:": idAccesorios, "Color Cabello:": idCabello,
+                   "Genero:": idGenero,"Emocion:": idEmocion, "Accesorios:": idAccesorios, "Color Cabello:": idCabello,
                    "Densidad Cabello:": idDensidad,"Textura cabello:": idDensidad, "Forma ojos:": idForma,
                    "Color ojos:": idColor,"Provincia:": idProvincia}
 
     personas.append(diccionario)  # Copy the full dictionary into the declared list
     return personas
+
+def mostrarDatos(claves):
+    print("Cedula", "Genero", "        Piel", "    Emocion", sep='\t \t \t \t')
+    print("******************************************************************************************************** \n")
+    cedula = claves["Cedula:"]
+    inde = claves["Color Piel:"]
+    piel = colorPiel()
+    indexEmocion = claves["Emocion:"]
+    emocion = emociones()
+    indexGenero = claves["Genero:"]
+    genero = generos()
+    print(cedula, genero[indexGenero], piel[inde], emocion[indexEmocion], sep='\t \t \t \t \t ')
+    print('\n')
+
+def estadisticaProvinciaEtario():
+    for claves in personas:
+        if claves["Provincia:"] == 0:
+            provincia = claves["Provincia:"]
+            index = provincias()
+            print("----Provincia: ", index[provincia], " ----")
+            if claves["Grupo Etario:"] == 0:
+                print("---- Niño ----")
+                mostrarDatos(claves)
+            elif claves["Grupo Etario:"] == 1:
+                print("---- Adolescente ----")
+                mostrarDatos(claves)
+            elif claves["Grupo Etario:"] == 2:
+                print("---- Adulto ----")
+                mostrarDatos(claves)
+            elif claves["Grupo Etario:"] == 3:
+                print("---- Aldulto Mayor ----")
+                mostrarDatos(claves)
+        elif claves["Provincia:"] == 1:
+            provincia = claves["Provincia:"]
+            index = provincias()
+            print("----Provincia: ", index[provincia], " ----")
+            if claves["Grupo Etario:"] == 2:
+                mostrarDatos(claves)
+            elif claves["Grupo Etario:"] == 1:
+                mostrarDatos(claves)
+            elif claves["Grupo Etario:"] == 2:
+                mostrarDatos(claves)
+        elif claves["Provincia:"] == 2:
+            provincia = claves["Provincia:"]
+            index = provincias()
+            print("----Provincia: ", index[provincia], " ----")
+            if claves["Grupo Etario:"] == 2:
+                mostrarDatos(claves)
+            elif claves["Grupo Etario:"] == 1:
+                mostrarDatos(claves)
+            elif claves["Grupo Etario:"] == 2:
+                mostrarDatos(claves)
+            elif claves["Grupo Etario:"] == 3:
+                mostrarDatos(claves)
+        elif claves["Provincia:"] == 3:
+            provincia = claves["Provincia:"]
+            index = provincias()
+            print("----Provincia: ", index[provincia], " ----")
+            if claves["Grupo Etario:"] == 2:
+                mostrarDatos(claves)
+            elif claves["Grupo Etario:"] == 1:
+                mostrarDatos(claves)
+            elif claves["Grupo Etario:"] == 2:
+                mostrarDatos(claves)
+            elif claves["Grupo Etario:"] == 3:
+                mostrarDatos(claves)
+        elif claves["Provincia:"] == 4:
+            provincia = claves["Provincia:"]
+            index = provincias()
+            print("----Provincia: ", index[provincia], " ----")
+            if claves["Grupo Etario:"] == 2:
+                mostrarDatos(claves)
+            elif claves["Grupo Etario:"] == 1:
+                mostrarDatos(claves)
+            elif claves["Grupo Etario:"] == 2:
+                mostrarDatos(claves)
+            elif claves["Grupo Etario:"] == 3:
+                mostrarDatos(claves)
+        elif claves["Provincia:"] == 5:
+            provincia = claves["Provincia:"]
+            index = provincias()
+            print("----Provincia: ", index[provincia], " ----")
+            if claves["Grupo Etario:"] == 2:
+                mostrarDatos(claves)
+            elif claves["Grupo Etario:"] == 1:
+                mostrarDatos(claves)
+            elif claves["Grupo Etario:"] == 2:
+                mostrarDatos(claves)
+            elif claves["Grupo Etario:"] == 3:
+                mostrarDatos(claves)
+        elif claves["Provincia:"] == 6:
+            provincia = claves["Provincia:"]
+            index = provincias()
+            print("----Provincia: ", index[provincia]," ----")
+            if claves["Grupo Etario:"] == 2:
+                mostrarDatos(claves)
+            elif claves["Grupo Etario:"] == 1:
+                mostrarDatos(claves)
+            elif claves["Grupo Etario:"] == 2:
+                mostrarDatos(claves)
+            elif claves["Grupo Etario:"] == 3:
+                mostrarDatos(claves)
 
 
 def main():
@@ -463,24 +567,25 @@ def main():
                 print("\n-------------Bienvenido", usuario, "--------------\n")
                 opcion = int(input(menuAdmin()))
                 if opcion == 1:
-                   crearPersonaAutomaticamente()
+                   print(crearPersonaAutomaticamente())
                    print("\n-------------SE HA CREADO LA PERSONA CORRECTAMENTE--------------\n")
-                if opcion == 2:
+                elif opcion == 2:
                     print("\n-------------CREAREMOS UNA PERSONA--------------\n")
                     crearPersonaManualmente()
                     print("\n-------------SE HA CREADO LA PERSONA CORRECTAMENTE--------------\n")
-                else:
-                    return
             elif tipo == "user":
                 print("\n-------------Bienvenido", usuario, "--------------\n")
                 opcion = int(input(menuUser()))
                 if opcion == 1:
                     break
+                elif opcion == 2:
+                    for h in personas:
+                        print(h)
             elif tipo == "analista":
                 print("\n-------------Bienvenido", usuario, "--------------\n")
                 opcion = int(input(menuAnalista()))
                 if opcion == 1:
+                    estadisticaProvinciaEtario()
+                elif opcion == 2:
                     break
-
-
 main()
