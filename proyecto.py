@@ -584,21 +584,22 @@ def Modificar_Persona():
         IDaModificar = input("Ingrese cedula")
         usuario["Cedula"] == IDaModificar
         for usuario in personas:
-            newfeel=usuario["Emocion"].replace(usuario["Emocion"],change,1)
+            newfeel=usuario["Emocion"].replace(usuario["Emocion"],change,1) #DA ERROR:FALTA CORREGIR
             usuario["Emocion"]=newfeel
             print("TRY CODE",usuario["Emocion"])
 
 
             print("PRUEBA 1", usuario["Emocion"])
 
-def consultar_Persona():
-    print("¡Usted va a consultar una persona!")
-    ced=input("Ingrese la cedula a consultar")
-    for usuarios["Cedula"] in personas:
-        if usuarios["Cedula"]== ced:
-            print("La persona consultada si existe")
-    else:
-        print("La persona consultada no existe")
+def Consultar_Persona():
+    print("Usted va a Consultar una persona")
+    consulta=input("Ingrese la cedula a consultar")
+    for usuario in personas:
+        if usuario["Cedula"]==consulta:
+            print("La persona ",consulta," Si existe")
+        else:
+            print("La persona consultada no existe")
+            main()
 
 
 
@@ -630,7 +631,6 @@ def main():
                     Modificar_Persona()
                 elif opcion ==2:
                     print("HACER METODO CONSULTAR PERSONA")
-                    consultar_Persona()
                 else :
                     main()
 
