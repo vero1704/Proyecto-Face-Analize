@@ -10,11 +10,11 @@ usuarios = [{"nombreusuario": "Juan", "contraseña": "123", "tipo": "admin"},
             {"nombreusuario": "Carla", "contraseña": "123", "tipo": "user"},
             {"nombreusuario": "Marco", "contraseña": "123", "tipo": "analista"}]
 
-personas = [{"Cedula": "29873654", "Edad ": 15, "Rostro": "Redondo", "Color Piel": "Morena", "Grupo Etario": "Adolescente",
-                   "Genero": "Femenino",
-                   "Emocion ": "Alegría","Accesorios:": "Aretes", "Color Cabello": "Negro",
-                   "Densidad Cabello": "Escaso","Textura cabello": "rizado", "Forma ojos": "Almendrados", "Color ojos": "Castaño",
-                   "Provincia": "Alajuela"}]
+personas = [{"Cedula:": "29873654", "Edad:": 15, "Rostro:": "Redondo:", "Color Piel:": "Morena:", "Grupo Etario:": "Adolescente",
+                   "Genero:": "Femenino",
+                   "Emocion:": "Alegría","Accesorios:": "Aretes", "Color Cabello:": "Negro",
+                   "Densidad Cabello:": "Escaso","Textura cabello:": "rizado", "Forma ojos:": "Almendrados", "Color ojos:": "Castaño",
+                   "Provincia:": "Alajuela"}]
 
 """
 Description: Function that sees the main menu
@@ -98,6 +98,8 @@ def inicio_Sesión(user, contraseña):
             return usuario["tipo"]
     if encontrado == False:
         print("-------Datos inválidos. Vuelva a intentarlo-------- \n")
+        main()
+
 
 
 """
@@ -117,7 +119,7 @@ Returns the number, which will be the age of the user
 
 
 def generarEdad():
-    edades = random.randrange(0, 100)
+    edades = random.randrange(1, 100)
     return edades
 
 
@@ -560,7 +562,7 @@ def crearPersonaManualmente():
 
 def Modificar_Persona():
     print("¿QUÉ DESEA MODIFICAR?\n"
-          "Digite 1 para modificar privincia \n"
+          "Digite 1 para modificar provincia \n"
           "Digite 2 para modificar las emociones \n"
           "Digite 3 para salir\n")
     Opt = input("SELECCIONE UNA OPCION")
@@ -569,38 +571,46 @@ def Modificar_Persona():
               "Ingrese el usuario que desea modificar")
         IDaModificar = input("Ingrese cedula")
         for usuario in personas:
-            if usuario["Cedula"] == IDaModificar:
+            if usuario["Cedula:"] == IDaModificar:
                 digito = input("Ingrese el digito que quiere reemplazar")
-                print("PRUEBA 1", usuario["Cedula"])
-                newced=usuario["Cedula"].replace(usuario["Cedula"][0],digito,1)
-                usuario["Cedula"]=newced
-                print("PRUEBA 1", usuario["Cedula"])
-                #if digito=="1":
+                print("PRUEBA 1", usuario["Cedula:"])
+                newced=usuario["Cedula:"].replace(usuario["Cedula:"][0],digito,1)
+                usuario["Cedula:"]=newced
+                print("PRUEBA 1", usuario["Cedula:"])
+                main()
+            else:
+                print("La cedula no existe \n"
+                      "Digite una cedula existente")
+                main()
     elif Opt == "2":
         print("¡Usted va a modificar una emoción!\n"
               "Las emociones disponibles son \n"
               "Enfado= 0","Disgusto= 1","Miedo= 2", "Sorpresa= 3", "Alegría= 4", "Neutral= 5", "Tristeza= 6\n")
-        change=input("Seleccione una emoción")
+
         IDaModificar = input("Ingrese cedula")
-        usuario["Cedula"] == IDaModificar
         for usuario in personas:
-            newfeel=usuario["Emocion"].replace(usuario["Emocion"],change,1) #DA ERROR:FALTA CORREGIR
-            usuario["Emocion"]=newfeel
-            print("TRY CODE",usuario["Emocion"])
 
+            if usuario["Cedula:"] == IDaModificar:
+                change = input("Seleccione el número de la emoción")
+                newfeel=usuario["Emocion:"].replace(usuario["Emocion:"],change,1)
+                usuario["Emocion:"]=newfeel
 
-            print("PRUEBA 1", usuario["Emocion"])
+                print(usuario["Emocion:"])
+                main()
+            else:
+                print("La cedula no existe \n"
+                      "Digite una cedula existente")
+                main()
 
 def Consultar_Persona():
     print("Usted va a Consultar una persona")
     consulta=input("Ingrese la cedula a consultar")
     for usuario in personas:
-        if usuario["Cedula"]==consulta:
+        if usuario["Cedula:"]==consulta:
             print("La persona ",consulta," Si existe")
         else:
             print("La persona consultada no existe")
             main()
-
 
 
 def main():
@@ -629,9 +639,9 @@ def main():
                 opcion = int(input(menuUser()))
                 if opcion == 1:
                     Modificar_Persona()
-                elif opcion ==2:
-                    print("HACER METODO CONSULTAR PERSONA")
-                else :
+                elif opcion == 2:
+                    Consultar_Persona()
+                else:
                     main()
 
             if tipo == "analista":
@@ -639,10 +649,12 @@ def main():
                 opcion = int(input(menuAnalista()))
                 if opcion == 1:
                     print("hello")
-
+        else:
+            menu==2
+            return
     except ValueError:
         print("Ingrese un número del menú")
         main()
-
 main()
+
 
