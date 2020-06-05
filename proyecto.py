@@ -5,6 +5,7 @@ SEMANA: PROYECTO
 """
 
 import random
+import operator
 from builtins import len
 
 usuarios = [{"nombreusuario": "Juan", "contraseña": "123", "tipo": "admin"},
@@ -180,21 +181,28 @@ def grupoEtario(edad):
         g = grupo[0]  # Gets the item in those positions
         index = grupo.index(g)  # Gets the index of the element
         listaNiños.append(index)
+        print("Niño")
         return index
+
     elif edad > 10 and edad <= 19:
         g = grupo[1]
         index = grupo.index(g)
         listaAdolescente.append(index)
+        print("Adolescente")
         return index
+
     elif edad >= 20 and edad < 59:
         g = grupo[2]
         index = grupo.index(g)
         listaAdultos.append(index)
+        print("Adulto")
         return index
+
     elif edad >= 59:
         g = grupo[3]
         index = grupo.index(g)
         listaMayores.append(index)
+        print("Adulto Mayor")
         return index
 
 
@@ -566,8 +574,8 @@ def crearPersonaManualmente():
     return personas
 
 def mostrarCedulas():
+    print("------------LISTA DE CEDULAS -------------- \n")
     for id in personas:
-        print("------------LISTA DE CEDULAS -------------- \n")
         print("---",id["Cedula:"])
 
 def Modificar_Persona():
@@ -578,15 +586,14 @@ def Modificar_Persona():
           "Digite 3 para salir\n")
     Opt = input("Seleccione una opción: ")
     if Opt == "1":
-
         print("Usted va a modificar la provincia\n"
               "Ingrese el usuario que desea modificar")
         mostrarCedulas()
-        IDaModificar = input("Ingrese cedula")                      #Requires the ID to access the person
+        IDaModificar = input("Ingrese cedula: ")                    #Requires the ID to access the person
         for usuario in personas:
             if usuario["Cedula:"] == IDaModificar:                  #Validate if the person exists
                 print("SAN JOSÉ=1, ALAJUELA=2, CARTAGO=3, HEREDIA=4, GUANACASTE=5, PUNTARENAS=6, LIMÓN=7") #Shows all the provinces
-                digito = input("Ingrese el digito de la provincia que quiere reemplazar")                  #
+                digito = input("Ingrese el digito de la provincia que quiere reemplazar")
                 newced=usuario["Cedula:"].replace(usuario["Cedula:"][0],digito,1)                          #uses the first digit of the ID because it equals province and changes it once
                 usuario["Cedula:"]=newced                                                                  #Changes the first ID´s digit
                 if  digito=="1":
@@ -618,66 +625,51 @@ def Modificar_Persona():
                     print("La provincia ha sido cambiada a Limón")                                          #Saves "7" in the key "Provincia"
                     print(usuario["Provincia:"])
                     main()
-
             else:
                 print("La cedula no existe \n"                  
-                      "Digite una cedula existente") 
+                      "Digite una cedula existente")
                 main()                                           # If the ID is wrong. Asks to enter a valid ID
     elif Opt == "2":
         print("\n-------------Modificar  emoción-------------\n")
         mostrarCedulas()
-        IDaModificar = input("\nIngrese la cedula: ")
+        IDaModificar = input("\nIngrese la cedula: ")                                                                #Requires the ID to access the person
         for usuario in personas:
-            print(usuario["Cedula:"],IDaModificar)
-            if usuario["Cedula:"] == IDaModificar:
-
+            while usuario["Cedula:"] == IDaModificar:
                 print("Las emociones disponibles son: ")
                 print("Enfado = 0", "Disgusto = 1", "Miedo = 2", "Sorpresa = 3", "Alegría = 4", "Neutral = 5",
                       "Tristeza = 6", sep='\t')
-                                                                                                               #Requires the ID to access the person
-                change = input("Seleccione el número de la emoción")                                            #The user choose the sentiment with the respective number
-                newfeel= usuario["Emocion:"].replace(usuario["Emocion:"],change,1)                               #Replace the original sentiment with that chosen by the user.
-                usuario["Emocion:"]=newfeel
-                if  change=="0":
-                    usuario["Emocion:"]="0"                                                          #Saves "0" in the key "Emocion:"
-                    print("La emoción ha sido cambiada a Enfado")
-                    print(usuario["Emocion:"])
+                if usuario["Cedula:"] == IDaModificar:
+                    change = int(input("Seleccione el número de la emoción: "))
+                    print("\n")
+                    usuario["Emocion:"] = change                                                 #Saves "CHANGE" in the key "Emocion:"
+                    if  change == 0:
+                        print("La emoción ha sido cambiada a Enfado \n")
+                        main()
+                    elif change == 1:
+                        print("La emoción ha sido cambiada a Disgusto \n")
+                        main()
+                    elif change == 2 :
+                        print("La emoción ha sido cambiada a Miedo \n")
+                        main()
+                    elif change == 3:
+                        print("La emoción ha sido cambiada a Sorpresa \n")
+                        main()
+                    elif change== 4:
+                        print("La emoción ha sido cambiada a Alegría \n")
+                        main()
+                    elif change== "5":
+                        print("La emoción ha sido cambiada a Neutral \n")
+                        main()
+                    elif change== "6":
+                        print("La emoción ha sido cambiada a Tristeza \n")
+                        main()
                     main()
-                if change== "1":
-                    usuario["Emocion:"]="1"
-                    print("La emoción ha sido cambiada a Disgusto")
-                    print(usuario["Emocion:"])                                                      #Saves "1" in the key "Emocion:"
-                    main()
-                if change== "2":
-                    usuario["Emocion:"]="2"
-                    print("La emoción ha sido cambiada a Miedo")
-                    print(usuario["Emocion:"])                                                      #Saves "2" in the key "Emocion:"
-                    main()
-                if change== "3":
-                    usuario["Emocion:"]="3"
-                    print("La emoción ha sido cambiada a Sorpresa")
-                    print(usuario["Emocion:"])                                                      #Saves "3" in the key "Emocion:"
-                    main()
-                if change== "4":
-                    usuario["Emocion:"]="4"
-                    print("La emoción ha sido cambiada a Alegría")
-                    print(usuario["Emocion:"])                                                        #Saves "4" in the key "Emocion:"
-                    main()
-                if change== "5":
-                    usuario["Emocion:"]="5"
-                    print("La emoción ha sido cambiada a Neutral")                                     #Saves "5" in the key "Emocion:"
-                    main()
-                if change== "6":
-                    usuario["Emocion:"]="6"
-                    print("La emoción ha sido cambiada a Tristeza")                                     #Saves "6" in the key "Emocion:"
-                    print(usuario["Emocion:"])
-                    main()
-                main()
+                """
             else:
                 print("La cedula no existe \n"
                       "Digite una cedula existente")                                                    # If the ID is wrong. Asks to enter a valid ID
                 main()
-
+"""
 
 
 def Consultar_Persona():
@@ -717,7 +709,6 @@ def estadisticaProvinciaEtario():
     listaAdolescentes = []
     listaAdulto = []
     listaMayor = []
-
     imprimiendoNombreDeProvincia = False
     index = provincias()
     while contador < 7 :                                                    #Porque tengo 7 provincias
@@ -737,9 +728,7 @@ def estadisticaProvinciaEtario():
                 elif claves["Grupo Etario:"] == 3:
                     listaMayor.append(claves)
 
-
-
-        print("°° Niño ", len(listaNiño))
+        print("\n°° Niño ", len(listaNiño),"\n")
         print("Cedula", "Genero", "Piel", "Emocion", "Cabello", "Color", sep='\t \t \t')
         print(
             "******************************************************************************************************** \n")
@@ -747,7 +736,7 @@ def estadisticaProvinciaEtario():
             mostrarDatos(i)
         listaNiño = []
 
-        print("°° Adolescentes ",len(listaAdolescentes))
+        print("\n°° Adolescentes ",len(listaAdolescentes),"\n")
         print("Cedula", "Genero", "Piel", "Emocion", "Cabello", "Color", sep='\t \t \t')
         print(
             "******************************************************************************************************** \n")
@@ -755,7 +744,7 @@ def estadisticaProvinciaEtario():
             mostrarDatos(i)
         listaAdolescentes = []
 
-        print("°° Adulto ", len(listaAdulto))
+        print("\n°° Adulto ", len(listaAdulto),"\n")
         print("Cedula", "Genero", "Piel", "Emocion", "Cabello", "Color", sep='\t \t \t')
         print(
             "******************************************************************************************************** \n")
@@ -763,7 +752,7 @@ def estadisticaProvinciaEtario():
             mostrarDatos(i)
         listaAdulto = []
 
-        print("°° Adulto Mayor ", len(listaMayor))
+        print("\n°° Adulto Mayor ", len(listaMayor),"\n")
         print("Cedula", "Genero", "Piel", "Emocion", "Cabello", "Color", sep='\t \t \t')
         print(
             "******************************************************************************************************** \n")
@@ -773,15 +762,83 @@ def estadisticaProvinciaEtario():
 
         contador += 1
         imprimiendoNombreDeProvincia = False
+        print("\n°°°°°°Personas por provincia: ", contadorPersonasProvincia)
         contadorPersonasProvincia = 0
-        print("Personas por provincia: ", contadorPersonasProvincia)
 
-    print("Total niños en Costa Rica: ",len(listaNiños))
-    print("Total adolescentes en Costa Rica: ",len(listaAdolescente))
-    print("Total adultos en Costa Rica: ", len(listaAdultos))
-    print("Total adultos mayores en Costa Rica: ", len(listaMayores))
+    totalPersonas = len(listaNiños) + len(listaAdolescente) + len(listaAdultos) + len(listaMayores)
+    porcentajeNiños = (len(listaNiños) * 100) / totalPersonas
+    porcentajeAdolescentes = (len(listaAdolescente) * 100) / totalPersonas
+    porcentajeAdultos = (len(listaAdultos) * 100) / totalPersonas
+    porcentajeAdultosMayor = (len(listaMayores) * 100) / totalPersonas
+
+    print("\n -------------------ESTADISTICA TOTALES-------------------\n")
+    print("Total niños en Costa Rica: ",len(listaNiños),"                  Porcentaje de Niños en Costa Rica: ",porcentajeNiños,"%")
+    print("Total adolescentes en Costa Rica: ",len(listaAdolescente),"     Porcentaje de adolscentes en Costa Rica: ",porcentajeAdolescentes,"%")
+    print("Total adultos en Costa Rica: ", len(listaAdultos),"             Porcentaje de adultos en Costa Rica: ",porcentajeAdultos, "%")
+    print("Total adultos mayores en Costa Rica: ", len(listaMayores),"     Porcentaje de adultos mayores en Costa Rica: ",porcentajeAdultosMayor, "%")
 
 
+def estadisticaEmocion():
+   diccionario = {}
+   enfadado = 0
+   desprecio = 0
+   disgusto = 0
+   miedo = 0
+   sorpresa = 0
+   alegria = 0
+   neutral = 0
+   tristeza = 0
+   for i in personas:
+       if i["Emocion:"] == 0:
+           enfadado += 1
+       elif i["Emocion:"] == 1:
+           desprecio += 1
+       elif i["Emocion:"] == 2:
+           disgusto += 1
+       elif i["Emocion:"] == 3:
+           miedo += 1
+       elif i["Emocion:"] == 4:
+           sorpresa += 1
+       elif i["Emocion:"] == 5:
+           alegria += 1
+       elif i["Emocion:"] == 6:
+           neutral += 1
+       elif i["Emocion:"] == 7:
+           tristeza += 1
+   total = len(personas)
+   diccionario["Enfandado"] = enfadado
+   diccionario["Desprecio"] = desprecio
+   diccionario["Disgusto"] = disgusto
+   diccionario["Miedo"] = miedo
+   diccionario["Sorpresa"] = sorpresa
+   diccionario["Alegria"] = alegria
+   diccionario["Neutral"] = neutral
+   diccionario["Tristeza"] = tristeza
+   lis = []
+   lista = []
+   ordenado = sorted(diccionario.items(), key=operator.itemgetter(1), reverse=True)
+   for i in ordenado:
+       lis.append(i[0])
+       lista.append(i[1])
+
+   print("          ",end='\t')
+   for j in lis:
+       print(j,end='\t \t')
+
+   print('\n')
+   print("Total     ",end='\t')
+
+   for k in lista:
+       print(k,end='\t \t \t \t')
+
+   print('\n')
+
+   print("Porcentaje ",end='\t')
+   for j in lista:
+       porcentaje = (j * 100) / total
+       print(porcentaje,end='\t \t \t')
+
+   print('\n')
 
 
 def main():
@@ -825,8 +882,10 @@ def main():
                 opcion = int(input(menuAnalista()))
                 if opcion == 1:
                     estadisticaProvinciaEtario()
+                    main()
                 elif opcion == 2:
-                    pass
+                    estadisticaEmocion()
+                    main()
         else:
             menu==2
             return
@@ -834,7 +893,7 @@ def main():
         print("---------Ingrese un número del menú-----------")
         main()
 
-        
-mostrarCedulas()
+
+main()
 
 
