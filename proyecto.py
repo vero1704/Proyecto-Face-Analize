@@ -5,14 +5,13 @@ SEMANA: PROYECTO
 """
 
 import random
+from builtins import len
 
 usuarios = [{"nombreusuario": "Juan", "contraseña": "123", "tipo": "admin"},
             {"nombreusuario": "Carla", "contraseña": "123", "tipo": "user"},
             {"nombreusuario": "Marco", "contraseña": "123", "tipo": "analista"}]
 
-personas = [{"Cedula:": "29873654", "Edad:": 15, "Rostro:": 2, "Color Piel:": 1, "Grupo Etario:": 2,
-            "Genero:":0,"Emocion:":3,"Accesorios:": 0, "Color Cabello:": 1,"Densidad Cabello:":1,"Textura cabello:":0,
-             "Forma ojos:": 1, "Color ojos:": 0,"Provincia:": 3}]
+personas = []
 
 """
 Description: Function that sees the main menu
@@ -170,24 +169,32 @@ Description: Function that creates a list with age groups, but at the same time 
 Returns the age group index
 """
 
+listaNiños = []
+listaAdolescente =  []
+listaAdultos = []
+listaMayores = []
 
 def grupoEtario(edad):
     grupo = ["Niño", "Adolescente", "Adulto", "Adulto Mayor"]
     if edad > 0 and edad < 10:
         g = grupo[0]  # Gets the item in those positions
         index = grupo.index(g)  # Gets the index of the element
+        listaNiños.append(index)
         return index
     elif edad > 10 and edad <= 19:
         g = grupo[1]
         index = grupo.index(g)
+        listaAdolescente.append(index)
         return index
     elif edad >= 20 and edad < 59:
         g = grupo[2]
         index = grupo.index(g)
+        listaAdultos.append(index)
         return index
     elif edad >= 59:
         g = grupo[3]
         index = grupo.index(g)
+        listaMayores.append(index)
         return index
 
 
@@ -311,7 +318,7 @@ Returns the list with the different people and their attributes
 
 def crearPersonaAutomaticamente():
     cont = 0
-    while cont <= 10:
+    while cont <=15:
         diccionario = {}
         cedula = generarCedulas()
         edad = generarEdad()
@@ -558,6 +565,10 @@ def crearPersonaManualmente():
     personas.append(diccionario)  # Copy the full dictionary into the declared list
     return personas
 
+def mostrarCedulas():
+    for id in personas:
+        print(id["Cedula:"])
+
 
 def Modificar_Persona():
 
@@ -666,6 +677,51 @@ def Modificar_Persona():
 """
 Description: Function that
 """
+<<<<<<< HEAD
+=======
+
+def Consultar_Persona():                                                    
+    print("Usted va a Consultar una persona")                                                           
+    consulta=input("Ingrese la cedula a consultar")                                                     #Save in "Consulta" the ID 
+    for usuario in personas:
+        if usuario["Cedula:"]==consulta:                                                                #Asks if "Consulta" equal to the key "Cedula"
+            print("La persona ",consulta," Si existe")                                                  #Shows that the ID exist
+        else:
+            print("La persona consultada no existe")                                                    # If the ID is wrong. Shows that the ID doesn´t exist
+        print("\n -------------Modificar  provincia-------------\n")
+        print("-----------Ingrese al usuario que desea modificar-------------")
+        IDaModificar = input("Ingrese cedula: ")
+        for usuario in personas:
+            if usuario["Cedula:"] == IDaModificar:
+                digito = input("Ingrese el digito que quiere reemplazar: ")
+                print("PRUEBA 1", usuario["Cedula:"])
+                newced=usuario["Cedula:"].replace(usuario["Cedula:"][0],digito,1)
+                usuario["Cedula:"]=newced
+                print("PRUEBA 1", usuario["Cedula:"])
+                print("\n-------------SE HA MODIFICADO LA PERSONA CORRECTAMENTE--------------\n")
+                main()
+            else:
+                print("-------------La cedula no existe! Digite una cedula existente-------------\n")
+                main()
+    elif Opt == "2":
+        print("\n-------------Modificar  emoción-------------\n")
+        print("Las emociones disponibles son: ")
+        print("Enfado = 0","Disgusto = 1","Miedo = 2", "Sorpresa = 3", "Alegría = 4", "Neutral = 5", "Tristeza = 6",sep='\t')
+        mostrarCedulas()
+        IDaModificar = input("\nIngrese la cedula: ")
+        for usuario in personas:
+            print(usuario["Cedula:"],IDaModificar)
+            if usuario["Cedula:"] == IDaModificar:
+                change = input("Seleccione el número de la emoción: ")
+                newfeel=usuario["Emocion:"].replace(usuario["Emocion:"],change,1)
+                usuario["Emocion:"]=newfeel
+                print("\n-------------SE HA MODIFICADO LA EMOCIÓN CORRECTAMENTE--------------\n")
+                main()
+            else:
+                print("-------------La cedula no existe! Digite una cedula existente-------------")
+                main()
+
+>>>>>>> 27a22ee2e7de2fcd41bbf79e10ba3c8d0488f930
 def Consultar_Persona():
     print("-------------Consultar una persona-------------'\n'")
     consulta=input("Ingrese la cedula a consultar: ")
@@ -699,61 +755,76 @@ def mostrarDatos(claves):
 def estadisticaProvinciaEtario():
     contador = 0
     contadorPersonasProvincia = 0
-    contadorNiño = 1
-    contadorAdole = 1
-    contadorAdulto = 1
-    contadorMayo = 1
+    listaNiño = []
+    listaAdolescentes = []
+    listaAdulto = []
+    listaMayor = []
+
     imprimiendoNombreDeProvincia = False
-    nombre = False
     index = provincias()
     while contador < 7 :                                                    #Porque tengo 7 provincias
         for claves in personas:
-            if claves["Provincia:"] == contador  :
+            if claves["Provincia:"] == contador:
                 provincia = claves["Provincia:"]
                 contadorPersonasProvincia += 1
                 if imprimiendoNombreDeProvincia == False:
-                    print("\n----Provincia: ", index[provincia], " ----")
+                    print("\n----------------------------- PROVINCIA: ", index[provincia], "-----------------------------")
                     imprimiendoNombreDeProvincia = True
                 if claves["Grupo Etario:"] == 0:
-                    if nombre == False:
-                        print("---- Niño ", contadorNiño,"----")
-                        print("Cedula", "Genero", "Piel", "Emocion", "Cabello", "Color", sep='\t \t \t')
-                        print("******************************************************************************************************** \n")
-                        nombre = True
-                    mostrarDatos(claves)
-                    contadorNiño += 1
+                    listaNiño.append(claves)
                 elif claves["Grupo Etario:"] == 1:
-                    if nombre == False:
-                        print("---- Adolescente ",contadorAdole,"----")
-                        print("Cedula", "Genero", "Piel", "Emocion", "Cabello", "Color", sep='\t \t \t')
-                        print("******************************************************************************************************** \n")
-                        nombre = True
-                    mostrarDatos(claves)
-                    contadorAdole += 1
+                    listaAdolescentes.append(claves)
                 elif claves["Grupo Etario:"] == 2:
-                    if nombre == False:
-                        print("---- Adulto",contadorAdulto ,"----")
-                        print("Cedula", "Genero", "Piel","Emocion","Cabello","Color", sep='\t \t \t')
-                        print("******************************************************************************************************** \n")
-                        nombre = True
-                    mostrarDatos(claves)
-                    contadorAdulto += 1
+                    listaAdulto.append(claves)
                 elif claves["Grupo Etario:"] == 3:
-                    if nombre == False:
-                        print("---- Aldulto Mayor", contadorMayo ,"----")
-                        print("Cedula", "Genero", "Piel", "Emocion", "Cabello", "Color", sep='\t \t \t')
-                        print("******************************************************************************************************** \n")
-                        nombre = True
-                    mostrarDatos(claves)
-                    contadorMayo += 1
-                else:
-                    print("------ LA PROVINCIA NO TIENE RESULTADOS ------")
+                    listaMayor.append(claves)
 
-        print("\n Total de personas en la provincia es de ", contadorPersonasProvincia)
-        contadorPersonasProvincia = 0
-        contador +=1
+
+
+        print("°° Niño ", len(listaNiño))
+        print("Cedula", "Genero", "Piel", "Emocion", "Cabello", "Color", sep='\t \t \t')
+        print(
+            "******************************************************************************************************** \n")
+        for i in listaNiño:
+            mostrarDatos(i)
+        listaNiño = []
+
+        print("°° Adolescentes ",len(listaAdolescentes))
+        print("Cedula", "Genero", "Piel", "Emocion", "Cabello", "Color", sep='\t \t \t')
+        print(
+            "******************************************************************************************************** \n")
+        for i in listaAdolescentes:
+            mostrarDatos(i)
+        listaAdolescentes = []
+
+        print("°° Adulto ", len(listaAdulto))
+        print("Cedula", "Genero", "Piel", "Emocion", "Cabello", "Color", sep='\t \t \t')
+        print(
+            "******************************************************************************************************** \n")
+        for i in listaAdulto:
+            mostrarDatos(i)
+        listaAdulto = []
+
+        print("°° Adulto Mayor ", len(listaMayor))
+        print("Cedula", "Genero", "Piel", "Emocion", "Cabello", "Color", sep='\t \t \t')
+        print(
+            "******************************************************************************************************** \n")
+        for i in listaMayor:
+            mostrarDatos(i)
+        listaMayor = []
+
+        contador += 1
         imprimiendoNombreDeProvincia = False
-        nombre = False
+        contadorPersonasProvincia = 0
+        print("Personas por provincia: ", contadorPersonasProvincia)
+
+    print("Total niños en Costa Rica: ",len(listaNiños))
+    print("Total adolescentes en Costa Rica: ",len(listaAdolescente))
+    print("Total adultos en Costa Rica: ", len(listaAdultos))
+    print("Total adultos mayores en Costa Rica: ", len(listaMayores))
+
+
+
 
 def main():
     try:
