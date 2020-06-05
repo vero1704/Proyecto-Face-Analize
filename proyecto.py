@@ -674,54 +674,8 @@ def Modificar_Persona():
                       "Digite una cedula existente")                                                    # If the ID is wrong. Asks to enter a valid ID
                 main()
 
-"""
-Description: Function that
-"""
-<<<<<<< HEAD
-=======
 
-def Consultar_Persona():                                                    
-    print("Usted va a Consultar una persona")                                                           
-    consulta=input("Ingrese la cedula a consultar")                                                     #Save in "Consulta" the ID 
-    for usuario in personas:
-        if usuario["Cedula:"]==consulta:                                                                #Asks if "Consulta" equal to the key "Cedula"
-            print("La persona ",consulta," Si existe")                                                  #Shows that the ID exist
-        else:
-            print("La persona consultada no existe")                                                    # If the ID is wrong. Shows that the ID doesn´t exist
-        print("\n -------------Modificar  provincia-------------\n")
-        print("-----------Ingrese al usuario que desea modificar-------------")
-        IDaModificar = input("Ingrese cedula: ")
-        for usuario in personas:
-            if usuario["Cedula:"] == IDaModificar:
-                digito = input("Ingrese el digito que quiere reemplazar: ")
-                print("PRUEBA 1", usuario["Cedula:"])
-                newced=usuario["Cedula:"].replace(usuario["Cedula:"][0],digito,1)
-                usuario["Cedula:"]=newced
-                print("PRUEBA 1", usuario["Cedula:"])
-                print("\n-------------SE HA MODIFICADO LA PERSONA CORRECTAMENTE--------------\n")
-                main()
-            else:
-                print("-------------La cedula no existe! Digite una cedula existente-------------\n")
-                main()
-    elif Opt == "2":
-        print("\n-------------Modificar  emoción-------------\n")
-        print("Las emociones disponibles son: ")
-        print("Enfado = 0","Disgusto = 1","Miedo = 2", "Sorpresa = 3", "Alegría = 4", "Neutral = 5", "Tristeza = 6",sep='\t')
-        mostrarCedulas()
-        IDaModificar = input("\nIngrese la cedula: ")
-        for usuario in personas:
-            print(usuario["Cedula:"],IDaModificar)
-            if usuario["Cedula:"] == IDaModificar:
-                change = input("Seleccione el número de la emoción: ")
-                newfeel=usuario["Emocion:"].replace(usuario["Emocion:"],change,1)
-                usuario["Emocion:"]=newfeel
-                print("\n-------------SE HA MODIFICADO LA EMOCIÓN CORRECTAMENTE--------------\n")
-                main()
-            else:
-                print("-------------La cedula no existe! Digite una cedula existente-------------")
-                main()
 
->>>>>>> 27a22ee2e7de2fcd41bbf79e10ba3c8d0488f930
 def Consultar_Persona():
     print("-------------Consultar una persona-------------'\n'")
     consulta=input("Ingrese la cedula a consultar: ")
