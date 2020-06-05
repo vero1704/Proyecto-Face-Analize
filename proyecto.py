@@ -567,8 +567,8 @@ def crearPersonaManualmente():
 
 def mostrarCedulas():
     for id in personas:
-        print(id["Cedula:"])
-
+        print("------------LISTA DE CEDULAS -------------- \n")
+        print("---",id["Cedula:"])
 
 def Modificar_Persona():
 
@@ -581,6 +581,7 @@ def Modificar_Persona():
 
         print("Usted va a modificar la provincia\n"
               "Ingrese el usuario que desea modificar")
+        mostrarCedulas()
         IDaModificar = input("Ingrese cedula")                      #Requires the ID to access the person
         for usuario in personas:
             if usuario["Cedula:"] == IDaModificar:                  #Validate if the person exists
@@ -620,17 +621,20 @@ def Modificar_Persona():
 
             else:
                 print("La cedula no existe \n"                  
-                      "Digite una cedula existente")                                            # If the ID is wrong. Asks to enter a valid ID
-                main()
+                      "Digite una cedula existente") 
+                main()                                           # If the ID is wrong. Asks to enter a valid ID
     elif Opt == "2":
-        print("¡Usted va a modificar una emoción!\n"                                                            #Shows what the user is going to do
-              "Las emociones disponibles son \n"
-              "Enfado= 0","Disgusto= 1","Miedo= 2", "Sorpresa= 3", "Alegría= 4", "Neutral= 5", "Tristeza= 6\n") #Show all sentiments with their respective numbers.
-
-        IDaModificar = input("Ingrese cedula")
+        print("\n-------------Modificar  emoción-------------\n")
+        mostrarCedulas()
+        IDaModificar = input("\nIngrese la cedula: ")
         for usuario in personas:
+            print(usuario["Cedula:"],IDaModificar)
+            if usuario["Cedula:"] == IDaModificar:
 
-            if usuario["Cedula:"] == IDaModificar:                                                              #Requires the ID to access the person
+                print("Las emociones disponibles son: ")
+                print("Enfado = 0", "Disgusto = 1", "Miedo = 2", "Sorpresa = 3", "Alegría = 4", "Neutral = 5",
+                      "Tristeza = 6", sep='\t')
+                                                                                                               #Requires the ID to access the person
                 change = input("Seleccione el número de la emoción")                                            #The user choose the sentiment with the respective number
                 newfeel= usuario["Emocion:"].replace(usuario["Emocion:"],change,1)                               #Replace the original sentiment with that chosen by the user.
                 usuario["Emocion:"]=newfeel
@@ -829,6 +833,8 @@ def main():
     except ValueError:
         print("---------Ingrese un número del menú-----------")
         main()
-main()
+
+        
+mostrarCedulas()
 
 
