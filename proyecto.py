@@ -105,7 +105,7 @@ Returns the number, which will be the user's ID
 """
 
 def generarCedulas():
-    cedula = random.randrange(1000) + 1
+    cedula = random.randrange(1000000,8000000) + 1
     return str(cedula)
 
 
@@ -586,14 +586,15 @@ def Modificar_Persona():
           "Digite 3 para salir\n")
     Opt = input("Seleccione una opción: ")
     if Opt == "1":
-        print("Usted va a modificar la provincia\n"
-              "Ingrese el usuario que desea modificar")
+        print("\n-------------Modificar  Provincia-------------\n")
         mostrarCedulas()
-        IDaModificar = input("Ingrese cedula: ")                    #Requires the ID to access the person
+
+        IDaModificar = input("\nIngrese la cedula: ")                                                                #Requires the ID to access the person
         for usuario in personas:
             if usuario["Cedula:"] == IDaModificar:                  #Validate if the person exists
+                print("El primer digito de a cedula equivale a la provincia")
                 print("SAN JOSÉ=1, ALAJUELA=2, CARTAGO=3, HEREDIA=4, GUANACASTE=5, PUNTARENAS=6, LIMÓN=7") #Shows all the provinces
-                digito = input("Ingrese el digito de la provincia que quiere reemplazar")
+                digito = input("Ingrese el digito de la provincia que quiere cambiar")
                 newced=usuario["Cedula:"].replace(usuario["Cedula:"][0],digito,1)                          #uses the first digit of the ID because it equals province and changes it once
                 usuario["Cedula:"]=newced                                                                  #Changes the first ID´s digit
                 if  digito=="1":
@@ -625,10 +626,10 @@ def Modificar_Persona():
                     print("La provincia ha sido cambiada a Limón")                                          #Saves "7" in the key "Provincia"
                     print(usuario["Provincia:"])
                     main()
-            else:
-                print("La cedula no existe \n"                  
+                      
+        print("La cedula no existe \n"                  
                       "Digite una cedula existente")
-                main()                                           # If the ID is wrong. Asks to enter a valid ID
+        Modificar_Persona()
     elif Opt == "2":
         print("\n-------------Modificar  emoción-------------\n")
         mostrarCedulas()
@@ -664,12 +665,12 @@ def Modificar_Persona():
                         print("La emoción ha sido cambiada a Tristeza \n")
                         main()
                     main()
-                """
+                
             else:
                 print("La cedula no existe \n"
                       "Digite una cedula existente")                                                    # If the ID is wrong. Asks to enter a valid ID
                 main()
-"""
+
 
 
 def Consultar_Persona():
