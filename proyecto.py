@@ -23,7 +23,7 @@ Return the menu
 def menuPrincipal():
     menu = ("--------------FACE ANALIZE -------------- \n"
             "***************************************** \n"
-            "Dite 1 para iniciar Sesion\n"
+            "Digite 1 para iniciar Sesion\n"
             "Digite 2 para terminar\n"
             "\n"
             "Seleccione una opción del menú: ")
@@ -560,19 +560,14 @@ def crearPersonaManualmente():
 
 
 def Modificar_Persona():
-<<<<<<< HEAD
-    print("¿QUÉ DESEA MODIFICAR?\n"
-          "Digite 1 para modificar provincia \n"
-          "Digite 2 para modificar las emociones \n"                 #Menu shows all the functions for modify a person
-=======
+
     print("\n¿QUÉ DESEA MODIFICAR?\n")
-    print("Digite 1 para modificar provincia \n"
+    print("Digite 1 para modificar provincia \n"            #Menu shows all the functions for modify a person
           "Digite 2 para modificar las emociones \n"
->>>>>>> a36ddc8a0398edb0128c651ddb7dae00523af609
           "Digite 3 para salir\n")
     Opt = input("Seleccione una opción: ")
     if Opt == "1":
-<<<<<<< HEAD
+
         print("Usted va a modificar la provincia\n"
               "Ingrese el usuario que desea modificar")
         IDaModificar = input("Ingrese cedula")                      #Requires the ID to access the person
@@ -582,7 +577,7 @@ def Modificar_Persona():
                 digito = input("Ingrese el digito de la provincia que quiere reemplazar")                  #
                 newced=usuario["Cedula:"].replace(usuario["Cedula:"][0],digito,1)                          #uses the first digit of the ID because it equals province and changes it once
                 usuario["Cedula:"]=newced                                                                  #Changes the first ID´s digit
-                if  digito=="1"                                                                  
+                if  digito=="1":                                                            
                     usuario["Provincia:"]="1"                                                               #Saves "1" in the key "Provincia"
                     print("La provincia ha sido cambiada a San José")                                       
                     main()
@@ -628,7 +623,7 @@ def Modificar_Persona():
                 change = input("Seleccione el número de la emoción")                                            #The user choose the sentiment with the respective number
                 newfeel=usuario["Emocion:"].replace(usuario["Emocion:"],change,1)                               #Replace the original sentiment with that chosen by the user.
                 usuario["Emocion:"]=newfeel  
-                if  digito=="0"                                                                  
+                if  digito=="0":                                                                  
                     usuario["Emocion:"]="0"                                                          #Saves "0" in the key "Emocion:"
                     print("La emoción ha sido cambiada a Enfado")   
                     print(usuario["Emocion:"])                                    
@@ -680,7 +675,6 @@ def Consultar_Persona():
             print("La persona ",consulta," Si existe")                                                  #Shows that the ID exist
         else:
             print("La persona consultada no existe")                                                    # If the ID is wrong. Shows that the ID doesn´t exist
-=======
         print("\n -------------Modificar  provincia-------------\n")
         print("-----------Ingrese al usuario que desea modificar-------------")
         IDaModificar = input("Ingrese cedula: ")
@@ -800,8 +794,6 @@ def estadisticaProvinciaEtario():
         contador +=1
         imprimiendoNombreDeProvincia = False
         nombre = False
->>>>>>> a36ddc8a0398edb0128c651ddb7dae00523af609
-
 
 def main():
     try:
