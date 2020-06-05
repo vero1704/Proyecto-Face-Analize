@@ -10,11 +10,9 @@ usuarios = [{"nombreusuario": "Juan", "contraseña": "123", "tipo": "admin"},
             {"nombreusuario": "Carla", "contraseña": "123", "tipo": "user"},
             {"nombreusuario": "Marco", "contraseña": "123", "tipo": "analista"}]
 
-personas = [{"Cedula:": "29873654", "Edad:": 15, "Rostro:": "Redondo:", "Color Piel:": "Morena:", "Grupo Etario:": "Adolescente",
-                   "Genero:": "Femenino",
-                   "Emocion:": "Alegría","Accesorios:": "Aretes", "Color Cabello:": "Negro",
-                   "Densidad Cabello:": "Escaso","Textura cabello:": "rizado", "Forma ojos:": "Almendrados", "Color ojos:": "Castaño",
-                   "Provincia:": "Alajuela"}]
+personas = [{"Cedula:": "29873654", "Edad:": 15, "Rostro:": 2, "Color Piel:": 1, "Grupo Etario:": 2,
+            "Genero:":0,"Emocion:":3,"Accesorios:": 0, "Color Cabello:": 1,"Densidad Cabello:":1,"Textura cabello:":0,
+             "Forma ojos:": 1, "Color ojos:": 0,"Provincia:": 3}]
 
 """
 Description: Function that sees the main menu
@@ -25,10 +23,10 @@ Return the menu
 def menuPrincipal():
     menu = ("--------------FACE ANALIZE -------------- \n"
             "***************************************** \n"
-            "1.Iniciar Sesion\n"
-            "2.Salir\n"
+            "Dite 1 para iniciar Sesion\n"
+            "Digite 2 para terminar\n"
             "\n"
-            "Seleccione una opcion: ")
+            "Seleccione una opción del menú: ")
     return menu
 
 
@@ -41,11 +39,11 @@ Return the menu
 def menuAdmin():
     menu = ("--------------FACE ANALIZE -------------- \n"
             "***************************************** \n"
-            "\n1.Crear persona automaticamente \n"
-            "2.Crear persona manualmente \n"
-            "3.Salir\n"
+            "\nDigite 1 para crear persona automaticamente \n"
+            "Digite 2 crear persona manualmente \n"
+            "Digite 3 para volver al menú\n"
             "\n"
-            "Seleccione una opcion: ")
+            "Seleccione una opción del menú: ")
     return menu
 
 
@@ -58,11 +56,11 @@ Return the menu
 def menuUser():
     menu = ("--------------FACE ANALIZE -------------- \n"
             "***************************************** \n"
-            "\n Digite 1 para Modificar una persona\n"
-            "Digite 2 para Consultar personas \n"
-            "Digite 3 para Volver al menu\n"
+            "\nDigite 1 para modificar una persona\n"
+            "Digite 2 para consultar personas \n"
+            "Digite 3 para volver al menu\n"
             "\n"
-            "Seleccione una opción del menú")
+            "Seleccione una opción del menú: ")
     return menu
 
 
@@ -75,12 +73,11 @@ Return the menu
 def menuAnalista():
     menu = ("--------------FACE ANALIZE -------------- \n"
             "***************************************** \n"
-            "\n1.Estadistica por provincia\n"
-            "2.Estadistica de grupo etario \n"
-            "3.Estadistica por emocióm"
-            "4. Volver al menú\n"
+            "\nDigite 1 para ver estadistica por provincia y grupo etario\n"
+            "Digite 2 para ver estadistica por emoción\n"
+            "Digite 3 para volver al menú\n"
             "\n"
-            "Seleccione una opcion: ")
+            "Seleccione una opción del menú: ")
     return menu
 
 
@@ -313,38 +310,40 @@ Returns the list with the different people and their attributes
 
 
 def crearPersonaAutomaticamente():
-    diccionario = {}
-    cedula = generarCedulas()
-    edad = generarEdad()
-    rostro = random.choice(formaRostro())  # Get a face type elements randomly
-    idRostro = formaRostro().index(rostro)  # Gets the index of the element
-    piel = random.choice(colorPiel())  # Get a skin type elements randomly
-    idPiel = colorPiel().index(piel)  # Gets the index of the element
-    grupo = grupoEtario(edad)
-    genero = random.choice(generos())
-    idGenero = generos().index(genero)
-    emocion = random.choice(emociones())
-    idEmocion = emociones().index(emocion)
-    accesorio = random.choice(accesorios())
-    idAccesorio = accesorios().index(accesorio)
-    provincia = random.choice(provincias())
-    idProvincia = provincias().index(provincia)
-    cabelloColor = colorPelo(cabello())
-    cabelloDensidad = densidadCabello(cabello())
-    cabelloTextura = texturaCabello(cabello())
-    formaOjos = ojosForma(ojos())
-    colorOjos = ojosColor(ojos())
+    cont = 0
+    while cont <= 10:
+        diccionario = {}
+        cedula = generarCedulas()
+        edad = generarEdad()
+        rostro = random.choice(formaRostro())  # Get a face type elements randomly
+        idRostro = formaRostro().index(rostro)  # Gets the index of the element
+        piel = random.choice(colorPiel())  # Get a skin type elements randomly
+        idPiel = colorPiel().index(piel)  # Gets the index of the element
+        grupo = grupoEtario(edad)
+        genero = random.choice(generos())
+        idGenero = generos().index(genero)
+        emocion = random.choice(emociones())
+        idEmocion = emociones().index(emocion)
+        accesorio = random.choice(accesorios())
+        idAccesorio = accesorios().index(accesorio)
+        provincia = random.choice(provincias())
+        idProvincia = provincias().index(provincia)
+        cabelloColor = colorPelo(cabello())
+        cabelloDensidad = densidadCabello(cabello())
+        cabelloTextura = texturaCabello(cabello())
+        formaOjos = ojosForma(ojos())
+        colorOjos = ojosColor(ojos())
 
-    diccionario = {"Cedula:": cedula, "Edad:": edad, "Rostro": idRostro, "Color Piel:": idPiel, "Grupo Etario:": grupo,
-                   "Genero:": idGenero,
-                   "Emocion: ": idEmocion, "Accesorios:": idAccesorio, "Color Cabello:": cabelloColor,
-                   "Densidad Cabello:": cabelloDensidad,
-                   "Textura cabello:": cabelloTextura, "Forma ojos:": formaOjos, "Color ojos:": colorOjos,
-                   "Provincia:": idProvincia}
+        diccionario = {"Cedula:": cedula, "Edad:": edad, "Rostro": idRostro, "Color Piel:": idPiel,
+                       "Grupo Etario:": grupo, "Genero:": idGenero,
+                       "Emocion:": idEmocion, "Accesorios:": idAccesorio, "Color Cabello:": cabelloColor,
+                       "Densidad Cabello:": cabelloDensidad,
+                       "Textura cabello:": cabelloTextura, "Forma ojos:": formaOjos, "Color ojos:": colorOjos,
+                       "Provincia:": idProvincia}
 
-    personas.append(diccionario)  # Copy the full dictionary into the declared list
+        personas.append(diccionario)  # Copy the full dictionary into the declared list
+        cont += 1
     return personas
-
 
 """
 Description: Function that goes through the list of face shapes, and shows them one by one.
@@ -561,56 +560,131 @@ def crearPersonaManualmente():
 
 
 def Modificar_Persona():
-    print("¿QUÉ DESEA MODIFICAR?\n"
-          "Digite 1 para modificar provincia \n"
+    print("\n¿QUÉ DESEA MODIFICAR?\n")
+    print("Digite 1 para modificar provincia \n"
           "Digite 2 para modificar las emociones \n"
           "Digite 3 para salir\n")
-    Opt = input("SELECCIONE UNA OPCION")
+    Opt = input("Seleccione una opción: ")
     if Opt == "1":
-        print("Usted va a modificar la provincia\n"
-              "Ingrese el usuario que desea modificar")
-        IDaModificar = input("Ingrese cedula")
+        print("\n -------------Modificar  provincia-------------\n")
+        print("-----------Ingrese al usuario que desea modificar-------------")
+        IDaModificar = input("Ingrese cedula: ")
         for usuario in personas:
             if usuario["Cedula:"] == IDaModificar:
-                digito = input("Ingrese el digito que quiere reemplazar")
+                digito = input("Ingrese el digito que quiere reemplazar: ")
                 print("PRUEBA 1", usuario["Cedula:"])
                 newced=usuario["Cedula:"].replace(usuario["Cedula:"][0],digito,1)
                 usuario["Cedula:"]=newced
                 print("PRUEBA 1", usuario["Cedula:"])
+                print("\n-------------SE HA MODIFICADO LA PERSONA CORRECTAMENTE--------------\n")
                 main()
             else:
-                print("La cedula no existe \n"
-                      "Digite una cedula existente")
+                print("-------------La cedula no existe! Digite una cedula existente-------------\n")
                 main()
     elif Opt == "2":
-        print("¡Usted va a modificar una emoción!\n"
-              "Las emociones disponibles son \n"
-              "Enfado= 0","Disgusto= 1","Miedo= 2", "Sorpresa= 3", "Alegría= 4", "Neutral= 5", "Tristeza= 6\n")
-
-        IDaModificar = input("Ingrese cedula")
+        print("\n-------------Modificar  emoción-------------\n")
+        print("Las emociones disponibles son: ")
+        print("Enfado = 0","Disgusto = 1","Miedo = 2", "Sorpresa = 3", "Alegría = 4", "Neutral = 5", "Tristeza = 6",sep='\t')
+        IDaModificar = input("\nIngrese la cedula: ")
         for usuario in personas:
-
             if usuario["Cedula:"] == IDaModificar:
-                change = input("Seleccione el número de la emoción")
+                change = input("Seleccione el número de la emoción: ")
                 newfeel=usuario["Emocion:"].replace(usuario["Emocion:"],change,1)
                 usuario["Emocion:"]=newfeel
-
-                print(usuario["Emocion:"])
+                print("\n-------------SE HA MODIFICADO LA EMOCIÓN CORRECTAMENTE--------------\n")
                 main()
             else:
-                print("La cedula no existe \n"
-                      "Digite una cedula existente")
+                print("-------------La cedula no existe! Digite una cedula existente-------------")
                 main()
 
 def Consultar_Persona():
-    print("Usted va a Consultar una persona")
-    consulta=input("Ingrese la cedula a consultar")
+    print("-------------Consultar una persona-------------'\n'")
+    consulta=input("Ingrese la cedula a consultar: ")
     for usuario in personas:
         if usuario["Cedula:"]==consulta:
-            print("La persona ",consulta," Si existe")
-        else:
-            print("La persona consultada no existe")
-            main()
+            print("La persona ",consulta," si existe")
+            return True
+
+def mostrarDatos(claves):
+    cedula = claves["Cedula:"]
+
+    inde = claves["Color Piel:"]
+    piel = colorPiel()
+
+    indexEmocion = claves["Emocion:"]
+    emocion = emociones()
+    indexGenero = claves["Genero:"]
+    genero = generos()
+
+    indexColor= claves["Color Cabello:"]
+    ojitos = ojos()
+    ojo= ojitos["color"][indexColor]
+
+    indexCabello = claves["Textura cabello:"]
+    cabellos = cabello()
+    textura = cabellos["textura"][indexCabello]
+
+    print(cedula, genero[indexGenero], piel[inde], emocion[indexEmocion],textura,ojo, sep='\t \t \t')
+
+
+def estadisticaProvinciaEtario():
+    contador = 0
+    contadorPersonasProvincia = 0
+    contadorNiño = 1
+    contadorAdole = 1
+    contadorAdulto = 1
+    contadorMayo = 1
+    imprimiendoNombreDeProvincia = False
+    nombre = False
+    index = provincias()
+    while contador < 7 :                                                    #Porque tengo 7 provincias
+        for claves in personas:
+            if claves["Provincia:"] == contador  :
+                provincia = claves["Provincia:"]
+                contadorPersonasProvincia += 1
+                if imprimiendoNombreDeProvincia == False:
+                    print("\n----Provincia: ", index[provincia], " ----")
+                    imprimiendoNombreDeProvincia = True
+                if claves["Grupo Etario:"] == 0:
+                    if nombre == False:
+                        print("---- Niño ", contadorNiño,"----")
+                        print("Cedula", "Genero", "Piel", "Emocion", "Cabello", "Color", sep='\t \t \t')
+                        print("******************************************************************************************************** \n")
+                        nombre = True
+                    mostrarDatos(claves)
+                    contadorNiño += 1
+                elif claves["Grupo Etario:"] == 1:
+                    if nombre == False:
+                        print("---- Adolescente ",contadorAdole,"----")
+                        print("Cedula", "Genero", "Piel", "Emocion", "Cabello", "Color", sep='\t \t \t')
+                        print("******************************************************************************************************** \n")
+                        nombre = True
+                    mostrarDatos(claves)
+                    contadorAdole += 1
+                elif claves["Grupo Etario:"] == 2:
+                    if nombre == False:
+                        print("---- Adulto",contadorAdulto ,"----")
+                        print("Cedula", "Genero", "Piel","Emocion","Cabello","Color", sep='\t \t \t')
+                        print("******************************************************************************************************** \n")
+                        nombre = True
+                    mostrarDatos(claves)
+                    contadorAdulto += 1
+                elif claves["Grupo Etario:"] == 3:
+                    if nombre == False:
+                        print("---- Aldulto Mayor", contadorMayo ,"----")
+                        print("Cedula", "Genero", "Piel", "Emocion", "Cabello", "Color", sep='\t \t \t')
+                        print("******************************************************************************************************** \n")
+                        nombre = True
+                    mostrarDatos(claves)
+                    contadorMayo += 1
+                else:
+                    print("------ LA PROVINCIA NO TIENE RESULTADOS ------")
+
+        print("\n Total de personas en la provincia es de ", contadorPersonasProvincia)
+        contadorPersonasProvincia = 0
+        contador +=1
+        imprimiendoNombreDeProvincia = False
+        nombre = False
 
 
 def main():
@@ -626,34 +700,41 @@ def main():
                 if opcion == 1:
                     crearPersonaAutomaticamente()
                     print("\n-------------SE HA CREADO LA PERSONA CORRECTAMENTE--------------\n")
-                    main()
+                    menuAdmin()
                 if opcion == 2:
-                    print("\n-------------CREAREMOS UNA PERSONA--------------\n")
                     crearPersonaManualmente()
                     print("\n-------------SE HA CREADO LA PERSONA CORRECTAMENTE--------------\n")
-                    main()
+                    menuAdmin()
                 else:
-                    return
+                    main()
             if tipo == "user":
                 print("\n-------------Bienvenido", usuario, "--------------\n")
                 opcion = int(input(menuUser()))
                 if opcion == 1:
                     Modificar_Persona()
+                    main()
                 elif opcion == 2:
-                    Consultar_Persona()
+                    consultar = Consultar_Persona()
+                    if consultar == True:
+                        print("\n-------------LA PERSONA SI EXISTE EN EL REGISTRO--------------\n")
+                        return menuUser()
+                    else:
+                        print("\n-------------LA PERSONA NO EXISTE EN EL REGISTRO--------------\n")
+                        main()
                 else:
                     main()
-
             if tipo == "analista":
                 print("\n-------------Bienvenido", usuario, "--------------\n")
                 opcion = int(input(menuAnalista()))
                 if opcion == 1:
-                    print("hello")
+                    estadisticaProvinciaEtario()
+                elif opcion == 2:
+                    pass
         else:
             menu==2
             return
     except ValueError:
-        print("Ingrese un número del menú")
+        print("---------Ingrese un número del menú-----------")
         main()
 main()
 
