@@ -290,6 +290,7 @@ Description: Function that randomly creates a person with all attributes.
 Returns the list with the different people and their attributes
 """
 def crearPersonaAutomaticamente():
+    print("Creando Persona Automáticamente")
     cont = 0
     while cont <=15:
         diccionario = {}
@@ -483,6 +484,7 @@ Description: Function that manually creates a person with all the attributes. It
 Returns the list with the different people and their attributes.
 """
 def crearPersonaManualmente():
+    print("Creando Persona Manualmente")
     diccionario = {}
     cedula = generarCedulas()
     edad = generarEdad()
