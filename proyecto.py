@@ -20,7 +20,7 @@ Description: Function that sees the main menu
 Return the menu
 """
 def menuPrincipal():
-    menu = ("--------------FACE ANALIZE -------------- \n"
+    menu = ("--------------FACE ANALIZER -------------- \n"
             "***************************************** \n"
             "Digite 1 para iniciar Sesion\n"
             "Digite 2 para terminar\n"
@@ -34,7 +34,7 @@ Description: Function that sees the administrator menu
 Return the menu
 """
 def menuAdmin():
-    menu = ("--------------FACE ANALIZE -------------- \n"
+    menu = ("--------------FACE ANALIZER -------------- \n"
             "***************************************** \n"
             "\nDigite 1 para crear persona automaticamente \n"
             "Digite 2 crear persona manualmente \n"
@@ -49,7 +49,7 @@ Description: Function that sees the user menu.
 Return the menu
 """
 def menuUser():
-    menu = ("--------------FACE ANALIZE -------------- \n"
+    menu = ("--------------FACE ANALIZER -------------- \n"
             "***************************************** \n"
             "\nDigite 1 para modificar una persona\n"
             "Digite 2 para consultar personas \n"
@@ -64,7 +64,7 @@ Description: Function that sees the analyst menu.
 Return the menu
 """
 def menuAnalista():
-    menu = ("--------------FACE ANALIZE -------------- \n"
+    menu = ("--------------FACE ANALIZER -------------- \n"
             "***************************************** \n"
             "\nDigite 1 para ver estadistica por provincia y grupo etario\n"
             "Digite 2 para ver estadistica por emoción\n"
@@ -541,7 +541,7 @@ def Modificar_Persona():
           "Digite 3 para salir\n")
     Opt = int(input("Seleccione una opción: "))
     if Opt == 1:
-        print("\n-------------Modificar  Provincia-------------\n")
+        print("\n-------------Modificar  Provincia-------------")
         mostrarCedulas()
         IDaModificar = input("\nIngrese la cedula: ")                       #Requires the ID to access the person
         for usuario in personas:
@@ -554,31 +554,31 @@ def Modificar_Persona():
 
                 if digito == "1":
                     usuario["Provincia:"] = "1"                             #Saves "1" in the key "Provincia"
-                    print("La provincia ha sido cambiada a San José")
+                    print("La provincia ha sido cambiada a San José\n")
                     main()
                 if digito == "2":
                     usuario["Provincia:"] = "2"
-                    print("La provincia ha sido cambiada a Alajuela")       #Saves "2" in the key "Provincia"
+                    print("La provincia ha sido cambiada a Alajuela\n")       #Saves "2" in the key "Provincia"
                     main()
                 if digito == "3":
                     usuario["Provincia:"] = "3"
-                    print("La provincia ha sido cambiada a Cartago")  # Saves "3" in the key "Provincia"
+                    print("La provincia ha sido cambiada a Cartago\n")       #Saves "3" in the key "Provincia"
                     main()
                 if digito == "4":
                     usuario["Provincia:"] = "4"
-                    print("La provincia ha sido cambiada a Heredia")  # Saves "4" in the key "Provincia"
+                    print("La provincia ha sido cambiada a Heredia\n")        #Saves "4" in the key "Provincia"
                     main()
                 if digito == "5":
                     usuario["Provincia:"] = "5"
-                    print("La provincia ha sido cambiada a Guanacaste")  # Saves "5" in the key "Provincia"
+                    print("La provincia ha sido cambiada a Guanacaste\n")   #Saves "5" in the key "Provincia"
                     main()
                 if digito == "6":
                     usuario["Provincia:"] = "6"
-                    print("La provincia ha sido cambiada a Puntarenas")  # Saves "6" in the key "Provincia"
+                    print("La provincia ha sido cambiada a Puntarenas\n")  #Saves "6" in the key "Provincia"
                     main()
                 if digito == "7":
                     usuario["Provincia:"] = "7"
-                    print("La provincia ha sido cambiada a Limón")  # Saves "7" in the key "Provincia"
+                    print("La provincia ha sido cambiada a Limón\n")       #Saves "7" in the key "Provincia"
                     print(usuario["Provincia:"])
                     main()
 
