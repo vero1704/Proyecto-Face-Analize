@@ -543,22 +543,22 @@ def Modificar_Persona():
     if Opt == 1:
         print("\n-------------Modificar  Provincia-------------\n")
         mostrarCedulas()
-        IDaModificar = input("\nIngrese la cedula: ")  # Requires the ID to access the person
+        IDaModificar = input("\nIngrese la cedula: ")                       #Requires the ID to access the person
         for usuario in personas:
-            if usuario["Cedula:"] == IDaModificar:  # Validate if the person exists
-                print("El primer digito de a cedula equivale a la provincia")
-                print("SAN JOSÉ = 1, ALAJUELA = 2, CARTAGO = 3, HEREDIA = 4, GUANACASTE = 5, PUNTARENAS = 6, LIMÓN = 7")  # Shows all the provinces
+            if usuario["Cedula:"] == IDaModificar:                          #Validate if the person exists
+                print("\nEl primer digito de a cedula equivale a la provincia")
+                print("SAN JOSÉ = 1, ALAJUELA = 2, CARTAGO = 3, HEREDIA = 4, GUANACASTE = 5, PUNTARENAS = 6, LIMÓN = 7 \n")  # Shows all the provinces
                 digito = input("Ingrese el digito de la provincia que desea cambiar: ")
-                newced = usuario["Cedula:"].replace(usuario["Cedula:"][0], digito,1)  # uses the first digit of the ID because it equals province and changes it once
-                usuario["Cedula:"] = newced  # Changes the first ID´s digit
+                newced = usuario["Cedula:"].replace(usuario["Cedula:"][0], digito,1)            #Uses the first digit of the ID because it equals province and changes it once
+                usuario["Cedula:"] = newced                                                      #Changes the first ID´s digit
 
                 if digito == "1":
-                    usuario["Provincia:"] = "1"  # Saves "1" in the key "Provincia"
+                    usuario["Provincia:"] = "1"                             #Saves "1" in the key "Provincia"
                     print("La provincia ha sido cambiada a San José")
                     main()
                 if digito == "2":
                     usuario["Provincia:"] = "2"
-                    print("La provincia ha sido cambiada a Alajuela")  # Saves "2" in the key "Provincia"
+                    print("La provincia ha sido cambiada a Alajuela")       #Saves "2" in the key "Provincia"
                     main()
                 if digito == "3":
                     usuario["Provincia:"] = "3"
@@ -631,10 +631,13 @@ Description: Function that queries if the user is registered
 Returns true or false
 """
 def Consultar_Persona():
-    print("-------------Consultar una persona-------------'\n'")
+    print("-------------Consultar una persona-------------\n")
     consulta=input("Ingrese la cedula a consultar: ")
+
     for usuario in personas:
         if usuario["Cedula:"] == consulta:
+            print("\nCedula", "Genero", "Piel", "Emocion", "Cabello", "Color", sep='\t \t \t')
+            mostrarDatos(usuario)
             return True
 
 
