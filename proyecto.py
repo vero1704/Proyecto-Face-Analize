@@ -7,6 +7,7 @@ SEMANA: PROYECTO
 import random
 import operator
 from builtins import len
+from datetime import date,timedelta
 
 usuarios = [{"nombreusuario": "Juan", "contraseña": "123", "tipo": "admin"},
             {"nombreusuario": "Carla", "contraseña": "123", "tipo": "user"},
@@ -104,6 +105,17 @@ Returns the number, which will be the age of the user
 def generarEdad():
     edades = random.randrange(1, 100)
     return edades
+
+
+"""
+Description: function that converts age to a date of birth
+Returns the date.
+"""
+def convertirFecha(edad):
+    fechaActual = date.today()                              #Get the system date
+    fechaNum = (edad * 365)                                 #Multiply the age by the days of the year to get an amount
+    fecha = fechaActual - timedelta(fechaNum + 365)         #The date is subtracted with the age multiplication figure, we use timedelta for differences
+    return fecha
 
 
 """
@@ -283,6 +295,7 @@ def crearPersonaAutomaticamente():
         diccionario = {}
         cedula = generarCedulas()
         edad = generarEdad()
+        fechaNacimiento = convertirFecha(edad)
         rostro = random.choice(formaRostro())           #Get a face type elements randomly
         idRostro = formaRostro().index(rostro)          #Gets the index of the element
         piel = random.choice(colorPiel())               #Get a skin type elements randomly
@@ -302,7 +315,7 @@ def crearPersonaAutomaticamente():
         formaOjos = ojosForma(ojos())
         colorOjos = ojosColor(ojos())
 
-        diccionario = {"Cedula:": cedula, "Edad:": edad, "Rostro": idRostro, "Color Piel:": idPiel,
+        diccionario = {"Cedula:": cedula, "Edad:": fechaNacimiento, "Rostro": idRostro, "Color Piel:": idPiel,
                        "Grupo Etario:": grupo, "Genero:": idGenero,
                        "Emocion:": idEmocion, "Accesorios:": idAccesorio, "Color Cabello:": cabelloColor,
                        "Densidad Cabello:": cabelloDensidad,
@@ -473,6 +486,7 @@ def crearPersonaManualmente():
     diccionario = {}
     cedula = generarCedulas()
     edad = generarEdad()
+    fechaNacimiento = convertirFecha(edad)
     print("\n--- Formas de rostro ---")         #Print the attribute title
     idRostro = elegirRostro()                   #Assign the function to a variable
     print("\n--- Color de piel -----")
@@ -497,7 +511,7 @@ def crearPersonaManualmente():
     print("\n--- Provincias ----")
     idProvincia = elegirProvincia()
 
-    diccionario = {"Cedula:": cedula, "Edad:": edad, "Rostro": idRostro, "Color Piel:": idPiel,"Grupo Etario:": idGrupo,
+    diccionario = {"Cedula:": cedula, "Edad:": fechaNacimiento, "Rostro": idRostro, "Color Piel:": idPiel,"Grupo Etario:": idGrupo,
                    "Genero:": idGenero, "Emocion: ": idEmocion, "Accesorios:": idAccesorios,"Color Cabello:": idCabello,
                    "Densidad Cabello:": idDensidad, "Textura cabello:": idTextura, "Forma ojos:": idForma,
                    "Color ojos:": idColor, "Provincia:": idProvincia}
