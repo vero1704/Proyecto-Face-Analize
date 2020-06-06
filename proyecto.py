@@ -292,7 +292,7 @@ Returns the list with the different people and their attributes
 def crearPersonaAutomaticamente():
     print("Creando Persona Automáticamente")
     cont = 0
-    while cont <=15:
+    while cont <=150:
         diccionario = {}
         cedula = generarCedulas()
         edad = generarEdad()
