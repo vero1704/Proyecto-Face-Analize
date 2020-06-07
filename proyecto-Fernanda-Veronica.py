@@ -113,7 +113,7 @@ Returns the date.
 """
 def convertirFecha(edad):
     fechaActual = date.today()                              #Get the system date
-    fechaNum = (edad * 365)                                 #Multiply the age by the days of the year to get an amount
+    fechaNum = (edad * 365) + 1                            #Multiply the age by the days of the year to get an amount
     fecha = fechaActual - timedelta(fechaNum + 365)         #The date is subtracted with the age multiplication figure, we use timedelta for differences
     return fecha
 
