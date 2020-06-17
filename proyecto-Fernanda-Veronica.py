@@ -798,11 +798,9 @@ def estadisticaEmocion():
    for i in ordenado:
        listaLlaves.append(i[0])                     #Added the keys to a list
        listaClaves.append(i[1])                     #Added the values to a list
-
    print("          ",end='\t')
    for j in listaLlaves:                            #Scoured the list
        print(j,end='\t \t')                         #Printed the keys with spaces
-
    print('\n')
    print("Total     ",end='\t')
 
@@ -810,7 +808,6 @@ def estadisticaEmocion():
        print(k,end='\t \t \t \t')                   #Printed the values with spaces
 
    print('\n')
-
    print("Porcentaje ",end='\t')
 
    for j in listaClaves:                             #Scoured the list
