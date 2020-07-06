@@ -873,3 +873,4 @@ def main():
 main()
 
 
+,"Color cabello: ",hair.getColor(p.getColorCabello()),hair.getDensidadCabello(p.getDensidadCabello()),hair.getTexturaCabello(p.getTexturaCabello()
